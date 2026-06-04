@@ -10,7 +10,6 @@ import AboutSection from './components/AboutSection'
 const HomePage = () => {
   return (
     <>
-    <Navbar/>
       <Home/>
       <BikeShowcase />
       <FeatureCards/>
