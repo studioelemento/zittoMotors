@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 z-50 h-30 w-full bg-black">
@@ -19,9 +21,9 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#products" className="transition hover:text-gray-300">
+            <Link to="products" className="transition hover:text-gray-300">
               Products
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#careers" className="transition hover:text-gray-300">
