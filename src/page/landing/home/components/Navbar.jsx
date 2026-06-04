@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full bg-black">
-      <div className="mx-auto flex h-24 items-center justify-between px-8 lg:px-20">
+    <nav className="fixed top-0 left-0 z-50 h-30 w-full bg-black">
+      <div className="mx-auto flex h-26 items-center justify-between px-8 lg:px-20">
         {/* Logo */}
         <div>
           <img
@@ -12,7 +12,7 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <ul className="flex items-center gap-10 text-white">
+        <ul className="flex items-center gap-10 font-bold text-white mr-26">
           <li>
             <a href="#about" className="transition hover:text-gray-300">
               About

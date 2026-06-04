@@ -7,13 +7,13 @@ const features = [
   {
     title: "ACTIVE COOLING",
     description: "Advanced thermal management ensures peak performance.",
-        image: "/Home Page/Section 3 Image 2.png",
+    image: "/Home Page/Section 3 Image 2.png",
 
   },
   {
     title: "ADAPTIVE CHASSIS",
     description: "Engineered for stability, comfort and responsiveness.",
-            image: "/Home Page/Section 3 Image 3.png",
+    image: "/Home Page/Section 3 Image 3.png",
 
   },
 ];

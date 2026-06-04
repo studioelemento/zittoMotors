@@ -6,17 +6,19 @@ import FeatureCards from './components/FeatureCards'
 import HeroVideo from './components/HeroVideo'
 import HarmonySection from './components/HarmonySection'
 import AboutSection from './components/AboutSection'
+import Footer from './components/Footer'
 
 const HomePage = () => {
   return (
     <>
-    <Navbar/>
-      <Home/>
+      <Navbar />
+      <Home />
       <BikeShowcase />
-      <FeatureCards/>
-      <HeroVideo/>
-      <HarmonySection/>
-      <AboutSection/>
+      <FeatureCards />
+      <HeroVideo />
+      <HarmonySection />
+      <AboutSection />
+      <Footer />
     </>
   )
 }
