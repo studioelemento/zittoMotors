@@ -4,7 +4,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#202c32] text-white pt-5 pb-10 mt-10 w-full overflow-hidden">
+    <footer className="relative bg-[#202c32] text-white pt-5 pb-10  w-full overflow-hidden">
       {/* Red Top Bar */}
       <div 
         className="absolute top-0 left-0 h-[48px] bg-[#E33B42] w-full md:w-[45%] z-10 flex items-center justify-center md:justify-start md:[clip-path:polygon(0_0,100%_0,calc(100%-30px)_100%,0_100%)]"

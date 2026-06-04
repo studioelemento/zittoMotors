@@ -1,6 +1,6 @@
 export default function AboutSection() {
   return (
-    <section className="bg-[#f3f3f3]">
+    <section id="about" className="bg-[#f3f3f3]">
       <div className="mx-auto max-w-[1440px] px-8 pt-[140px] pb-[120px]">
         {/* Logo */}
         <img

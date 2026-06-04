@@ -29,7 +29,7 @@ export default function ZCRShowcase() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden bg-black">
+    <section className="relative mt-20 h-screen overflow-hidden bg-black cursor-pointer">
       {/* ZCR */}
       <div
         className={`
@@ -48,7 +48,7 @@ export default function ZCRShowcase() {
       </div>
 
       {/* White Backdrop */}
-    
+
 
       {/* Bike */}
       <div className="absolute w-full inset-0 flex items-center justify-center">

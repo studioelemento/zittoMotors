@@ -3,22 +3,20 @@ import HomePage from "./page/landing/home/HomePage";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import ProductPage from "./page/products/ProductPage";
 import Navbar from "./page/landing/home/components/Navbar";
-
+import AboutSection from "./page/landing/home/components/AboutSection";
 const App = () => {
   return (
     <div>
       <BrowserRouter>
       <Navbar/>
-      <div className="pt-20">
-      {" "}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/products" element={<ProductPage />} />
+        <Route path="/zcr" element={<ProductPage />} />
+        <Route path="/about" element={<AboutSection />} />
       </Routes>
-      </div>
       </BrowserRouter>
     </div>
   );
 };
 
-export default App;
+export default App; 

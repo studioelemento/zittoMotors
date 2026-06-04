@@ -44,7 +44,7 @@ export default function UpcomingSlider() {
   };
 
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden">
+    <section className="relative h-[min-h-screen] bg-black overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#450000_0%,#000_70%)]" />
 

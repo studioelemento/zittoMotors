@@ -4,7 +4,7 @@ export default function NotifySection() {
   return (
     <section className="relative  text-white bg-linear-[137deg] from-black from-80% to-white/20 to-100% overflow-hidden">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black">
+      {/* <nav className="fixed top-0 left-0 right-0 z-50 bg-black">
         <div className="mx-auto flex h-20 items-center justify-between px-16">
           <img
             src="/logo.svg"
@@ -18,7 +18,7 @@ export default function NotifySection() {
             <a href="#">Careers</a>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Content */}
       <div className="py-28">
