@@ -7,8 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 z-50 h-30 w-full bg-black">
-      <div className="mx-auto flex h-26 items-center justify-between px-8 lg:px-20">
+    <nav className="fixed top-0 left-0 z-50 h-[80px] md:h-[120px] w-full bg-black">
+      <div className="mx-auto flex h-full items-center justify-between px-6 lg:px-20">
         {/* Logo */}
         <div>
           <img
@@ -57,7 +57,7 @@ const Navbar = () => {
           </div>
           <ul className="flex flex-col mt-1 gap-5 text-[18px] font-bold text-white">
             <li>
-              <HashLink smooth to="/#about" onClick={() => setIsOpen(false)}>
+              <HashLink smooth to="/about" onClick={() => setIsOpen(false)}>
                 About
               </HashLink>
             </li>

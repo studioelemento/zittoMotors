@@ -1,80 +1,52 @@
+import { ChevronDown } from "lucide-react";
+
 const Home = () => {
   return (
     <section
       id="home"
-      style={{
-        position: "relative",
-        width: "100%",
-        /* Start BELOW the fixed navbar (80px tall) */
-        height: "100vh",
-        marginTop: "120px",
-        overflow: "hidden",
-        backgroundColor: "#000",
-      }}
+      className="relative w-full h-[calc(100vh-80px)] md:h-[calc(100vh-120px)] mt-[80px] md:mt-[120px] overflow-hidden bg-black"
     >
       {/* Background Image */}
       <img
         src="/Home Page/Home Hero Section (2).png"
         alt="Zitto Motorcycle"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "110%",
-          objectFit: "cover",
-          objectPosition: "center 25%",
-        }}
+        className="absolute inset-0 w-full h-full md:h-[110%] object-cover object-[center_25%]"
       />
 
       {/* Subtle left-side veil */}
       <div
+        className="absolute inset-0"
         style={{
-          position: "absolute",
-          inset: 0,
           background:
             "linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 55%)",
         }}
       />
 
-      {/* Text block — roughly 50% down inside the image area */}
+      {/* Text block */}
       <div
-        style={{
-          position: "absolute",
-          top: "35%",
-          left: "10%",
-          paddingLeft: "clamp(2rem, 14vw, 14rem)",
-        }}
+        className="absolute bottom-20 md:top-[35%] md:bottom-auto left-[2%] md:left-[10%] px-4 md:pl-[clamp(2rem,14vw,14rem)] w-full"
       >
         {/* Caption */}
         <p
-          style={{
-              color: "rgba(255, 255, 255, 0.73)",
-            fontSize: "22px",
-            fontFamily : "Saira, sans-serif",
-            fontWeight: 700,
-            letterSpacing: "0.01em",
-            margin: "0 0 2px 5px",
-          }}
+          className="text-white/90 text-[16px] md:text-[22px] font-bold tracking-wide mb-1 md:mb-2 ml-1"
+          style={{ fontFamily: "Saira, sans-serif" }}
         >
           For a different breed of motorcycle users.
         </p>
 
         {/* Heading */}
         <h1
-          style={{
-            fontFamily: "Saira, sans-serif",
-            color: "rgba(255, 255, 255, 0.73)",
-            fontSize: "118px",
-            fontWeight: 700,
-            lineHeight: "91px",
-            letterSpacing: "",
-            textTransform: "uppercase",
-            margin: 0,
-          }}
+          className="text-white/80 text-[54px] md:text-[118px] font-bold leading-[1] md:leading-[91px] uppercase m-0"
+          style={{ fontFamily: "Saira, sans-serif" }}
         >
           FOR THE <br />
           ENTHUSIAST
         </h1>
+      </div>
+      
+      {/* Scroll Down Arrow for Mobile (visible only on mobile) */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center md:hidden">
+        <ChevronDown size={40} strokeWidth={3} className="text-red-500 animate-bounce" />
       </div>
     </section>
   );
