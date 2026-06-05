@@ -75,6 +75,7 @@ export default function BikeShowcase() {
               <img
                 src={bikeImages[current]}
                 alt="Bike"
+                loading="lazy"
                 className={`w-full object-contain transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"
                   }`}
               />

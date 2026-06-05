@@ -10,6 +10,7 @@ const Home = () => {
       <img
         src="/Home Page/Home Hero Section (2).png"
         alt="Zitto Motorcycle"
+        fetchPriority="high"
         className="absolute inset-0 w-full h-full md:h-[110%] object-cover object-[center_25%]"
       />
 

@@ -31,6 +31,7 @@ export default function FeatureCards() {
             <img
               src={feature.image}
               alt={feature.title}
+              loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 

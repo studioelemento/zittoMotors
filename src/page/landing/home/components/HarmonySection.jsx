@@ -34,6 +34,7 @@ export default function HarmonySection() {
             <img
               src="/Home Page/Section 5.png"
               alt="Motorcycle details collage"
+              loading="lazy"
               className="w-full max-w-[520px] object-contain"
             />
           </div>
