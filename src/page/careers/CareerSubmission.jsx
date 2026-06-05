@@ -1,9 +1,15 @@
 import React from 'react'
+import SEO from '../../components/SEO'
 import Footer from '../landing/home/components/Footer'
 
 const CareerSubmission = () => {
   return (
     <div className="bg-white min-h-screen flex flex-col pt-[80px] md:pt-[120px]">
+      <SEO 
+        title="Submit Application - Zitto Motors" 
+        description="Apply for a position at Zitto Motors." 
+        path="/career-submission" 
+      />
       
       <div className="flex-grow w-full max-w-[800px] mx-auto px-6 py-16 md:py-24">
         <h1 className="text-[#1e293b] text-[20px] md:text-[22px] font-medium mb-1">Submit your application</h1>

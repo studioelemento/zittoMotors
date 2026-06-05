@@ -11,11 +11,13 @@ const Navbar = () => {
       <div className="mx-auto flex h-full items-center justify-between px-6 lg:px-20">
         {/* Logo */}
         <div className="flex items-center h-full">
-          <img
-            src="/Logo/logoWithText.png"
-            alt="Zitto"
-            className="h-[60px] md:h-[70px] object-contain"
-          />
+          <Link to="/">
+            <img
+              src="/Logo/logoWithText.png"
+              alt="Zitto"
+              className="h-[60px] md:h-[70px] object-contain"
+            />
+          </Link>
         </div>
 
         {/* Desktop Navigation Links */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import SEO from '../../components/SEO'
 import Footer from '../landing/home/components/Footer'
 import { Home, Briefcase, Plus, Minus } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -182,6 +183,11 @@ const JobCard = ({ job }) => {
 const CareersPage = () => {
   return (
     <div className="bg-[#f5f5f5] min-h-screen">
+      <SEO 
+        title="Careers at Zitto Motors" 
+        description="Join the Zitto Motors team. We are hiring passionate engineers and designers to build the future of motorcycles." 
+        path="/careers" 
+      />
       {/* Hero Section */}
       <div className="relative w-full h-[65vh] flex flex-col items-center justify-center mt-[70px]">
          <div 

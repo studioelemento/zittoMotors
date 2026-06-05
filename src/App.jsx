@@ -1,6 +1,7 @@
 import React from "react";
 import HomePage from "./page/landing/home/HomePage";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import ProductPage from "./page/products/ProductPage";
 import Navbar from "./page/landing/home/components/Navbar";
 import AboutSection from "./page/landing/home/components/AboutSection";
@@ -9,7 +10,7 @@ import CareerSubmission from "./page/careers/CareerSubmission";
 
 const App = () => {
   return (
-    <div>
+    <HelmetProvider>
       <BrowserRouter>
       <Navbar/>
       <Routes>
@@ -20,7 +21,7 @@ const App = () => {
         <Route path="/career-submission" element={<CareerSubmission />} />
       </Routes>
       </BrowserRouter>
-    </div>
+    </HelmetProvider>
   );
 };
 
