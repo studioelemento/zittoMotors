@@ -9,8 +9,8 @@ export default function Footer() {
     <footer className="relative bg-[#202c32] text-white pt-5 pb-10 w-full overflow-hidden">
 
       {/* Red Top Bar with diagonal clip */}
-      <div className="absolute top-0 left-0 h-[48px] bg-[#E33B42] w-full md:w-[45%] z-10 flex items-center justify-center md:justify-start md:[clip-path:polygon(0_0,100%_0,calc(100%-40px)_100%,0_100%)]">
-        <ul className="flex items-center gap-10 font-semibold text-[14px] md:pl-16 lg:pl-24">
+      <div className="absolute top-0 left-0 h-[48px] bg-[#D4373D] w-full md:w-[45%] z-10 flex items-center justify-center md:justify-start md:[clip-path:polygon(0_0,100%_0,calc(100%-40px)_100%,0_100%)]">
+        <ul className="flex items-center gap-10 font-semibold text-[20px] md:pl-16 lg:pl-24">
           <li><a href="#about" className="hover:text-gray-200 transition-colors">About</a></li>
           <li><a href="#products" className="hover:text-gray-200 transition-colors">Products</a></li>
           <li><Link to="/careers" className="hover:text-gray-200 transition-colors">Careers</Link></li>
@@ -72,7 +72,7 @@ export default function Footer() {
 
         {/* RIGHT — Contact Form */}
         <div className="w-full md:w-1/2 flex flex-col order-1 md:order-2 pt-3 md:pl-8">
-          <h3 className="text-[18px] font-bold uppercase tracking-[0.18em] mb-4">Contact Us</h3>
+          <h3 className="text-[28px] saira font-bold uppercase  mb-4">Contact Us</h3>
 
           <form className="flex flex-col gap-2.5 w-full" onSubmit={(e) => e.preventDefault()}>
             <input
@@ -92,7 +92,7 @@ export default function Footer() {
 
             <button
               type="submit"
-              className="mt-1 w-fit bg-[#E33B42] hover:bg-red-700 transition-colors text-white font-semibold text-[13px] px-5 py-2.5 rounded-[2px] flex items-center gap-2"
+              className="mt-1 w-fit bg-[#D4373D] hover:bg-red-700 transition-colors text-white font-semibold text-[13px] px-5 py-2.5 rounded-[2px] flex items-center gap-2"
             >
               Get in touch with us
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>

@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 
 const HomePage = () => {
   return (
-    <>
+    <div className='dm-sans'>
       <SEO 
         title="Zitto Motors - For The Enthusiast" 
         description="Zitto Motors builds premium electric motorcycles for the enthusiast. Discover a different breed of motorcycle." 
@@ -24,7 +24,7 @@ const HomePage = () => {
       <HarmonySection />
       <AboutSection />
       <Footer />
-    </>
+    </div>
   )
 }
 

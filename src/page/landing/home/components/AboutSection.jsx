@@ -10,7 +10,7 @@ export default function AboutSection() {
         />
 
         {/* Heading */}
-        <h2 className="mt-[34px] text-[54px] font-extrabold uppercase leading-none tracking-[0.03em] text-black">
+        <h2 className="mt-[34px] saira text-[54px] font-semibold uppercase leading-none tracking-[0.03em] text-black">
           ESTD 2020
         </h2>
 

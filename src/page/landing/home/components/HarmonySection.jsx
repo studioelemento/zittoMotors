@@ -15,7 +15,7 @@ export default function HarmonySection() {
               Form and Function
             </h2>
 
-            <p className="mt-8 text-lg leading-relaxed ">
+            <p className="mt-8 text-lg text-white leading-relaxed ">
               Our lineup of motorcycles epitomizes sophistication in design,
               complemented by unparalleled performance attributes and an array
               of state-of-the-art technologies. A fusion of exquisite
@@ -23,7 +23,7 @@ export default function HarmonySection() {
               innovation.
             </p>
 
-            <button className="mt-10 flex items-center gap-4 rounded bg-red-600/60 px-8 py-4 text-white transition hover:bg-red-700">
+            <button className="mt-10 dm-sans flex items-center gap-4 rounded bg-[#D4373D] px-8 py-2 text-white transition hover:bg-red-700">
               Show me more
               <ChevronRight size={20} />
             </button>

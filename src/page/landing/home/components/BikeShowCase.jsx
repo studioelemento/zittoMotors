@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, HeartPlus, HeartPlusIcon } from "lucide-react";
+import InterestModal from "./InterestModal";
 
 const bikeImages = [
   "/Home Page/Section 2 Image 1.png",
@@ -9,6 +10,7 @@ const bikeImages = [
 
 export default function BikeShowcase() {
   const [current, setCurrent] = useState(0);
+  const [showInterestModal, setShowInterestModal] = useState(false);
   const [fade, setFade] = useState(true);
 
   const changeBike = (newIndex) => {
@@ -29,69 +31,68 @@ export default function BikeShowcase() {
   };
 
   return (
-    <section className="bg-[#ffffff] py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
-
+    <section className="bg-white py-12 md:py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
           {/* LEFT CONTENT */}
-          <div className="w-full max-w-md text-center lg:text-left">
-            <h2 className="mb-4 text-4xl font-bold uppercase tracking-wide text-slate-800 sm:text-5xl lg:text-6xl">
+          <div className="w-full  lg:w-[20%] text-center lg:text-left">
+            <h2 className="mb-3 saira text-[clamp(1.9rem,6vw,2.5rem)] font-semibold leading-13 uppercase tracking-wide text-slate-800">
               CONCEPT ZCR™
             </h2>
 
-            <h3 className="mb-6 text-xl font-semibold text-slate-900 lg:text-2xl">
+            <h3 className="mb-4 text-[clamp(18px,22px, 22px)]     sm:text-xl lg:text-2xl font-semibold text-slate-900">
               The Café Racer
             </h3>
 
-            <p className="mb-8 text-base leading-relaxed text-slate-700 lg:text-lg">
+            <p className="mb-8  text-[clamp(16px,22px, 20px)] sm:text-base  leading-relaxed text-slate-700">
               Zitto's vision of a cafe racer with old-school charm and new-age
               technology blending seamlessly.
             </p>
 
-            <div className="flex flex-col gap-4">
-              <button className="w-fit rounded bg-red-500 px-8 py-3 text-lg font-semibold text-white hover:bg-red-600">
-                I'm Interested
+            <div className="flex flex-col w-max gap-4 lg:m-0 mx-auto justify-center lg:justify-start">
+              <button onClick={()=>setShowInterestModal(true)} className="rounded flex w-max justify-between gap-2 bg-[#D4373D] px-6 py-3 text-base font-semibold text-white transition hover:bg-red-600">
+                I'm Interested <HeartPlusIcon/>
               </button>
 
-              <button className="w-fit rounded bg-slate-900 px-8 py-3 text-lg font-semibold text-white hover:bg-slate-800">
-                Explore →
+              <button className="rounded flex  justify-between bg-[#202C32] px-6 py-3 text-base font-semibold text-white transition hover:bg-slate-800">
+                Explore <ArrowRight/>
               </button>
             </div>
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className="relative flex w-full items-center justify-center">
-
+          <div className="relative w-full lg:w-[60%] flex items-center justify-center">
             {/* Left Arrow */}
             <button
               onClick={prevBike}
-              className="absolute left-2 md:left-4 lg:left-8 z-10 flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded bg-red-500 text-white hover:bg-red-600"
+              className="absolute left-0 sm:left-20 lg:left-25 z-10 flex p-1 items-center justify-center rounded-sm bg-[#D4373D] text-white shadow-lg transition hover:bg-red-600"
             >
-              <ArrowLeft size={14} />
+              <ArrowLeft size={18} />
             </button>
 
             {/* Bike Image */}
-            <div className="w-full max-w-[900px]">
+            <div className="w-full max-w-[900px] px-8 sm:px-12">
               <img
                 src={bikeImages[current]}
                 alt="Bike"
                 loading="lazy"
-                className={`w-full object-contain transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"
-                  }`}
+                className={`w-full h-auto object-contain transition-opacity duration-300 ${
+                  fade ? "opacity-100" : "opacity-0"
+                }`}
               />
             </div>
 
             {/* Right Arrow */}
             <button
               onClick={nextBike}
-              className="absolute right-2 md:right-4 lg:right-8 z-10 flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded bg-red-500 text-white hover:bg-red-600"
+              className="absolute right-0 sm:right-10 lg:right-20 z-10 flex p-1 items-center justify-center rounded-sm bg-[#D4373D] text-white shadow-lg transition hover:bg-red-600"
             >
-              <ArrowRight size={14} />
+              <ArrowRight size={18} />
             </button>
           </div>
-
         </div>
       </div>
+      <InterestModal isOpen={showInterestModal} onClose={()=> setShowInterestModal(false)}/>
     </section>
   );
 }
