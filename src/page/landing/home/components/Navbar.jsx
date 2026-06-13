@@ -1,29 +1,61 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [atTop, setAtTop] = useState(true);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setAtTop(window.scrollY === 0);
+    };
+
+    handleScroll(); // check on mount
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <nav className="fixed top-0  left-0 z-50 h-[80px] md:h-[120px] w-full bg-black">
-      <div className="mx-auto flex h-full items-center justify-between px-6 lg:px-20">
+    <nav className={`sticky top-0  left-0 z-50 h-[80px] ${atTop ? "md:h-[100px]" : 'md:h-[80px]'} w-full bg-black`}>
+      <div className="mx-auto w-[91%] h-full flex py-3 items-center justify-between px-6 lg:px-16">
         {/* Logo */}
         <div className="flex items-center h-full">
-          <Link to="/">
-            <img
-              src="/Logo/logoWithText.png"
-              alt="Zitto"
-              className="h-[60px] md:h-[70px] object-contain"
-            />
-          </Link>
+         <Link to="/" className="h-full flex items-center relative">
+  {/* Full Logo */}
+  <img
+    src="/Logo/logoWithText.png"
+    alt="Zitto"
+    className={`absolute left-0 object-contain  ease-in-out
+      ${atTop
+        ? "opacity-100 scale-100 h-full"
+        : "opacity-0 scale-90 h-[80%]"
+      }`}
+  />
+
+  {/* Icon Logo */}
+  <img
+    src="/Logo/logoWithoutText.png"
+    alt="Zitto"
+    className={`object-contain 7 ease-in-out
+      ${atTop
+        ? "opacity-0 scale-90 h-[80%]"
+        : "opacity-100 scale-100 h-full"
+      }`}
+  />
+</Link>
         </div>
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden md:flex items-center gap-10 font-bold text-white mr-26">
+        <div></div>
+        <ul className="hidden  md:flex justify-between items-center gap-10 font-semibold text-center text-white ">
           <li>
-            <HashLink smooth to="/#about" className="transition hover:text-gray-300">
+            <HashLink
+              smooth
+              to="/#about"
+              className="transition flex justify-center  hover:text-gray-300"
+            >
               About
             </HashLink>
           </li>
@@ -49,13 +81,19 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Full-Screen Overlay Menu */}
-      <div 
+      <div
         className={`fixed top-0 left-0 w-full z-[100] bg-black h-64 flex flex-col px-8 py-6 transform transition-all duration-400 ease-out ${
-          isOpen ? "translate-y-0 opacity-100 pointer-events-auto shadow-2xl" : "-translate-y-full opacity-0 pointer-events-none"
+          isOpen
+            ? "translate-y-0 opacity-100 pointer-events-auto shadow-2xl"
+            : "-translate-y-full opacity-0 pointer-events-none"
         }`}
       >
         <div className="flex items-center justify-between">
-          <img src="/Logo/logoWithText.png" alt="Zitto" className="h-[50px] object-contain" />
+          <img
+            src="/Logo/logoWithText.png"
+            alt="Zitto"
+            className="h-[50px] object-contain"
+          />
           <button className="text-white" onClick={() => setIsOpen(false)}>
             <X size={32} />
           </button>

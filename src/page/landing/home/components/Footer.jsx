@@ -6,11 +6,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#202c32] text-white pt-5 pb-10 w-full overflow-hidden">
+    <footer className="relative bg-[#202c32] text-white  pb-10 w-full overflow-hidden">
 
       {/* Red Top Bar with diagonal clip */}
-      <div className="absolute top-0 left-0 h-[48px] bg-[#D4373D] w-full md:w-[45%] z-10 flex items-center justify-center md:justify-start md:[clip-path:polygon(0_0,100%_0,calc(100%-40px)_100%,0_100%)]">
-        <ul className="flex items-center gap-10 font-semibold text-[20px] md:pl-16 lg:pl-24">
+      <div className="relative top-0 left-0 h-[48px] bg-[#D4373D] w-full md:w-[48%] z-10 flex items-center justify-center md:justify-start md:[clip-path:polygon(0_0,100%_0,calc(100%-100px)_100%,0_100%)]">
+        <ul className="flex items-center gap-10 font-semibold text-[20px] md:pl-16 lg:pl-40">
           <li><a href="#about" className="hover:text-gray-200 transition-colors">About</a></li>
           <li><a href="#products" className="hover:text-gray-200 transition-colors">Products</a></li>
           <li><Link to="/careers" className="hover:text-gray-200 transition-colors">Careers</Link></li>
@@ -18,10 +18,10 @@ export default function Footer() {
       </div>
 
       {/* Two-column body */}
-      <div className="w-full px-6 md:px-16 lg:px-24 mt-14 flex flex-col md:flex-row justify-between gap-8">
+      <div className="w-full px-[148px]   flex flex-col md:flex-row justify-between gap-8">
 
         {/* LEFT — Logo, socials, legal */}
-        <div className="w-full md:w-1/2 flex flex-col order-2 md:order-1 pl-0 md:pl-16 pt-5">
+        <div className="w-full md:w-1/2 flex flex-col order-2 md:order-1 pl-0   pt-[40px]">
 
           {/* Logo image */}
           <div className="mb-">
@@ -32,13 +32,13 @@ export default function Footer() {
             />
           </div>
 
-          <p className="text-white text-[15px] font-medium tracking-wide mb-7">
+          <p className="text-white text-[15px] font-semimedium tracking-wide mb-7">
             For the Enthusiast.
           </p>
 
           {/* Socials */}
           <div className="flex items-center gap-3 mb-5 flex-wrap">
-            <span className="text-[16px] font-medium mr-1">Find us at /</span>
+            <span className="text-[16px] font-semimedium mr-1">Find us at /</span>
             {/* Instagram */}
             <a href="https://www.instagram.com/zittomotors/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -65,37 +65,40 @@ export default function Footer() {
           <p className="text-[12px] text-gray-300 mb-2">
             Copyright Zitto Motors Pvt Ltd © {new Date().getFullYear()}
           </p>
-          <p className="font-sans font-weight-300 text-[10px] text-gray-400 leading-[1.4] max-w-[800px] line-clamp-2">
+          <p className="font-sans font-weight-300 text-[10px] text-gray-300 leading-[1.4] max-w-[800px] ">
             Disclaimer: The images of motorcycles shown are for illustrative purposes only. Actual vehicles may vary in appearance, features, and specifications. Please refer to the specific model details or contact us for accurate and up-to-date information on our products. All materials presented, including images of motorcycles, are protected by copyright.
           </p>
         </div>
 
         {/* RIGHT — Contact Form */}
-        <div className="w-full md:w-1/2 flex flex-col order-1 md:order-2 pt-3 md:pl-8">
+        <div className="w-full md:w-1/2 flex flex-col order-1 md:order-2  md:pl-[150px]">
           <h3 className="text-[28px] saira font-bold uppercase  mb-4">Contact Us</h3>
 
-          <form className="flex flex-col gap-2.5 w-full" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col text-[#989898] gap-2.5 w-full" onSubmit={(e) => e.preventDefault()}>
             <input
               type="text"
               placeholder="Name"
-              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-gray-400 text-[13px]"
+              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] text-[16px]"
             />
             <input
               type="text"
               placeholder="Email Id / Phone number"
-              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-gray-400 text-[13px]"
+              className="w-full bg-white font-[16px] text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] "
             />
             <textarea
               placeholder="For investment, inquiries or further information, please add a note here, and we'll be in touch promptly."
-              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-gray-400 text-[13px] h-[90px] resize-none leading-snug"
+              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] text-[16px] h-[90px] resize-none leading-snug"
             ></textarea>
 
             <button
               type="submit"
-              className="mt-1 w-fit bg-[#D4373D] hover:bg-red-700 transition-colors text-white font-semibold text-[13px] px-5 py-2.5 rounded-[2px] flex items-center gap-2"
+              className="mt-1 w-fit bg-[#D4373D] leading-none hover:bg-red-700 transition-colors text-white font-semibold text-[20px] ps-[15px] pe-[20px] py-[10px] rounded-[5px] flex items-center gap-2"
             >
               Get in touch with us
+              <span className="ml-[26px]">
+
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </span>
             </button>
           </form>
         </div>

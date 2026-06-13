@@ -43,7 +43,7 @@ export default function FeatureCards() {
         </button>
 
         {/* Card */}
-        <div className="relative h-[320px] overflow-hidden">
+        <div className="relative h-[520px] overflow-hidden">
           <img
             src={features[currentFeature].image}
             alt={features[currentFeature].title}
@@ -91,7 +91,7 @@ export default function FeatureCards() {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="group relative h-[350px] lg:h-[420px] overflow-hidden cursor-pointer"
+            className="group relative h-[350px] lg:h-[700px] overflow-hidden cursor-pointer"
           >
             <img
               src={feature.image}
@@ -113,10 +113,10 @@ export default function FeatureCards() {
                   text-white
                   transition-all
                   duration-500
-                  group-hover:-translate-y-10
+                  group-hover:-translate-y-40
                 "
               >
-                {feature.title}
+                {feature.title.split(' ').reduce((acc, word, index)=> index === 0 ? [word] : [...acc, <br />, word],[])} 
               </h3>
 
               <p
@@ -124,12 +124,12 @@ export default function FeatureCards() {
                   dm-sans
                   mt-3
                   max-w-xs
-                  text-base lg:text-lg
+                  text-[20px]
                   text-white
                   opacity-0
                   transition-all
                   duration-500
-                  group-hover:-translate-y-10
+                  group-hover:-translate-y-40
                   group-hover:opacity-100
                 "
               >

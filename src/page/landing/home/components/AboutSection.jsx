@@ -1,7 +1,7 @@
 export default function AboutSection() {
   return (
-    <section id="about" className="bg-[#f3f3f3]">
-      <div className="mx-auto max-w-[1440px] px-8 pt-[140px] pb-[120px]">
+    <section id="about" className="bg-[#ffffff]">
+      <div className="  px-[148px] pt-[200px] pb-[120px]">
         {/* Logo */}
         <img
           src="https://zittomotors.com/wp-content/uploads/2024/02/Zitto-logo-2.png"
@@ -10,12 +10,12 @@ export default function AboutSection() {
         />
 
         {/* Heading */}
-        <h2 className="mt-[34px] saira text-[54px] font-semibold uppercase leading-none tracking-[0.03em] text-black">
+        <h2 className="mt-[34px] saira text-[46px] font-semibold uppercase leading-none tracking-[0.03em] text-black">
           ESTD 2020
         </h2>
 
         {/* Description */}
-        <p className="mt-[28px] max-w-[1320px] text-[20px] leading-[1.45] text-black">
+        <p className="mt-[28px]  text-[20px] leading-[1.45] text-black">
           At Zitto, we are focused on crafting high-performance motorcycles that
           redefine the thrill of riding with unmatched speed, agility, and
           precision. Saving the planet? Well, that happens to be a delightful
