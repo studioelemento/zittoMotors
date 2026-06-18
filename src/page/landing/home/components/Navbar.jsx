@@ -18,8 +18,8 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <nav className={`sticky top-0  left-0 z-50 h-[80px] ${atTop ? "md:h-[100px]" : 'md:h-[80px]'} w-full bg-black`}>
-      <div className="mx-auto w-[91%] h-full flex py-3 items-center justify-between px-6 lg:px-16">
+    <nav className={`fixed  top-0  left-0 z-50  ${atTop ? "md:h-[100px]  h-[85px]" : 'md:h-[85px] h-[76px]'} w-full bg-black`}>
+      <div className="md:mx-auto md:w-[91%] h-full flex py-3 items-center justify-between px-6 lg:px-16">
         {/* Logo */}
         <div className="flex items-center h-full">
          <Link to="/" className="h-full flex items-center relative">
@@ -40,8 +40,8 @@ const Navbar = () => {
     alt="Zitto"
     className={`object-contain 7 ease-in-out
       ${atTop
-        ? "opacity-0 scale-90 h-[80%]"
-        : "opacity-100 scale-100 h-full"
+        ? "opacity-0 scale-90 w-[20%]"
+        : "opacity-100 scale-100 w-[30%] md:h-full md:w-auto "
       }`}
   />
 </Link>

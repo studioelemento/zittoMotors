@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProductVideo = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-[309px] md:h-screen w-full overflow-hidden">
       {/* Video */}
       <video
         autoPlay

@@ -12,17 +12,20 @@ const App = () => {
   return (
     <HelmetProvider>
       <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/zcr" element={<ProductPage />} />
-        <Route path="/about" element={<AboutSection />} />
-        <Route path="/careers" element={<CareersPage />} />
-        <Route path="/career-submission" element={<CareerSubmission />} />
-      </Routes>
+        <Navbar />
+        <div className="pt-[85px] md:pt-[100px]">
+          {/* page content */}
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/zcr" element={<ProductPage />} />
+            <Route path="/about" element={<AboutSection />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/career-submission" element={<CareerSubmission />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </HelmetProvider>
   );
 };
 
-export default App; 
+export default App;

@@ -2,11 +2,18 @@
 @import "tailwindcss";
 
 
-html {
+html,body {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
+.bg-red{
+    background-color: #D4373D;
+}
 
 .saira{
   font-family: "Saira", sans-serif;

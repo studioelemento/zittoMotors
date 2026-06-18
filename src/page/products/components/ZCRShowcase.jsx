@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { HeartPlusIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const images = [
   "/ZCR Page/ZCR Hero Image 1.png",
@@ -29,17 +29,16 @@ export default function ZCRShowcase() {
   }, []);
 
   return (
-    <section className="relative mt-20 h-screen overflow-hidden bg-black cursor-pointer">
+    <section className="relative  h-[740px] overflow-hidden bg-black cursor-pointer">
       {/* ZCR */}
       <div
-        className={`
-          absolute inset-0 z-1 flex items-start justify-center
+        className={`absolute inset-0 z-1 flex items-start justify-center
           transition-all 
           ${animate ? "opacity-100 translate-y-0 duration-700" : "opacity-0 duration-0 -translate-y-24"}
-          `}
+       `}
       >
         <h1
-          className="text-[18vw] font-black text-white/10  hover:text-white
+          className="text-[18vw] saira md:text-[12vw] font-bold text-[#202C32]/60  hover:text-white
  leading-none transition-all duration-500     hover:[text-shadow:0_0_20px_rgba(255,255,255,0.8)]
 "
         >
@@ -49,7 +48,6 @@ export default function ZCRShowcase() {
 
       {/* White Backdrop */}
 
-
       {/* Bike */}
       <div className="absolute w-full inset-0 flex items-center justify-center">
         <img
@@ -57,8 +55,10 @@ export default function ZCRShowcase() {
           src={images[index]}
           alt=""
           className="
-            w-[100%]
-            object-contain
+            w-full
+            h-[740px]
+            md:w-full
+            object-cover
             animate-bike-enter
           "
         />
@@ -69,21 +69,31 @@ export default function ZCRShowcase() {
         onClick={() => changeSlide("prev")}
         className="
           absolute
-          left-70
-          top-1/2
+          left-0
+          top-1/3
+          md:top-[354px]
+          md:left-[155px]
           -translate-y-1/2
-          h-12
-          w-12
-          bg-red-500
+          h-[25px]
+          w-[29px]
+          md:h-[36px]
+          md:w-[36px]
+          p-1
+          bg-red
           text-white
           flex
           items-center
           justify-center
-          rounded-md
+          rounded-[3px]
           z-20
         "
       >
-        <ChevronLeft />
+        <svg viewBox="0 0 29.729 25.458" fill="white">
+          <path
+            d="M0,12.023H0L12.02,0l2.829,2.829L7.655,10.022H28.522v4H7.656l7.193,7.194L12.02,24.044Z"
+            transform="translate(0.707 0.707)"
+          ></path>
+        </svg>{" "}
       </button>
 
       {/* Right Arrow */}
@@ -91,38 +101,60 @@ export default function ZCRShowcase() {
         onClick={() => changeSlide("next")}
         className="
           absolute
-          right-70
-          top-1/2
+          right-0
+          top-1/3
+                    md:top-[354px]
+md:right-[155px]
           -translate-y-1/2
-          h-12
-          w-12
-          bg-red-500
+          h-[25px]
+          w-[29px]
+          md:h-[36px]
+          md:w-[36px]
+          p-1
+          bg-red
           text-white
           flex
           items-center
           justify-center
-          rounded-md
+          rounded-[3px]
           z-20
         "
       >
-        <ChevronRight />
+        <svg
+          width="29px"
+          fill="white"
+          height="25px"
+          viewBox="0 0 29.729 25.457"
+        >
+          <path
+            d="M13.672,21.215l7.193-7.194H0v-4H20.866L13.673,2.829,16.5,0l12.02,12.02h0L16.5,24.043Z"
+            transform="translate(0.5 0.707)"
+          ></path>
+        </svg>{" "}
       </button>
 
       {/* Wishlist */}
-      <div className="absolute bottom-50 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-1/5 left-1/2 -translate-x-1/2 z-100">
         <button
           className="
             border
             border-red-500
-            px-8
-            py-4
+            md:border-3
+            text-nowrap 
+            px-2
+            py-2
+            bg-[#D4373D]/10
+            hover:bg-[#D4373D]
+          md:py-[10px]
+          md:px-[29px]
+            text-[15px]
             text-white
-            text-xl
-            hover:bg-red-500/10
-            transition
+             transition-colors duration-300
           "
         >
-          Add to Wishlist ♡
+          <span className="text-[10px] md:text-[20px] items-center  flex gap-2 font-bold">
+            Add to Wishlist <HeartPlusIcon className="w-4 h-4 md:w-8 md:h-8" />
+          </span>
         </button>
       </div>
     </section>

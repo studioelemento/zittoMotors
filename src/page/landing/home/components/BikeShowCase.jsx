@@ -31,22 +31,21 @@ export default function BikeShowcase() {
   };
 
   return (
-    <section className="bg-white py-12 md:py-16 md:min-h-[75vh] lg:py-33 lg:px-20">
-      <div className="mx-auto w-full md:w-285">
-        <div className="flex mt-[80px] md:mt-[120px] lg:mt-auto flex-col-reverse lg:flex-row items-center">
+    <section className="bg-white py-12 md:py-16 lg:p-[7vw]">
+      <div className="mx-auto w-full max-w-[1140px]">
+        <div className="flex flex-col-reverse lg:flex-row items-center mt-[80px] md:mt-[120px] lg:mt-0">
           {/* LEFT CONTENT */}
           <div
             className="
               w-full
-              md:w-[70%]
+              md:w-[80%]
               lg:w-[40%]
+              md:p-[10px]
+              px-6
+
               text-left
               md:text-center
               lg:text-left
-              ps-[24px]
-              pe-[24px]
-              md:ps-[50px]
-              md:pe-[50px]
             "
           >
             <h2
@@ -57,7 +56,7 @@ export default function BikeShowcase() {
                 md:text-[40px]
                 font-semibold
                 leading-[32px]
-                md:leading-13
+                md:leading-[52px]
                 uppercase
                 tracking-wide
                 text-slate-800
@@ -70,7 +69,7 @@ export default function BikeShowcase() {
               The Café Racer
             </h3>
 
-            <h2
+            <p
               className="
                 mb-8
                 text-[16px]
@@ -78,48 +77,67 @@ export default function BikeShowcase() {
                 w-full
                 md:w-[80%]
                 lg:w-[67%]
+                mx-0
+                md:mx-auto
+                lg:mx-0
+                font-normal
                 leading-relaxed
                 text-slate-700
               "
             >
               Zitto's vision of a cafe racer with old-school charm and new-age
               technology blending seamlessly.
-            </h2>
+            </p>
 
-            <div className="flex flex-col w-full gap-4 lg:m-0 mx-auto justify-center lg:justify-start">
+            <div
+              className="
+                flex
+                flex-col
+                gap-4
+
+                items-start
+                md:items-center
+                lg:items-start
+              "
+            >
               <button
                 onClick={() => setShowInterestModal(true)}
                 className="
                   rounded
                   flex
-                  w-max
+                  items-center
+                  justify-between
+                  gap-2
                   py-[10px]
                   px-[15px]
                   md:px-[23px]
-                  justify-between
-                  gap-2
                   bg-[#D4373D]
-                  text-[20px]
+                  text-[18px]
+                  md:text-[20px]
                   font-bold
                   text-white
+                  leading-0
                   transition
                   hover:bg-red-600
                 "
               >
                 I'm Interested
-                <HeartPlusIcon className="ml-[26px]" />
+                <HeartPlusIcon className="ml-4 md:ml-6" />
               </button>
 
               <button
                 className="
                   flex
+                  items-center
+                  justify-between
                   rounded
                   bg-[#202C32]
-                  w-max
                   py-[10px]
                   px-[15px]
                   md:px-[23px]
-                  text-[20px]
+                  text-[18px]
+                  md:text-[20px]
+                  leading-0
                   font-bold
                   text-white
                   transition
@@ -127,7 +145,7 @@ export default function BikeShowcase() {
                 "
               >
                 Explore
-                <ArrowRight className="ml-[93px]" />
+                <ArrowRight className="ml-8 md:ml-[93px]" />
               </button>
             </div>
           </div>
@@ -137,11 +155,13 @@ export default function BikeShowcase() {
             className="
               relative
               w-full
-              md:w-[80%]
+              md:w-[90%]
               lg:w-[60%]
               flex
               items-center
               justify-center
+              mb-8
+              lg:mb-0
             "
           >
             {/* Left Arrow */}
@@ -149,8 +169,8 @@ export default function BikeShowcase() {
               onClick={prevBike}
               className="
                 absolute
-                left-[-5px]
-                md:left-[10px]
+                left-0
+                md:left-2
                 lg:left-5
                 z-10
                 flex
@@ -169,12 +189,12 @@ export default function BikeShowcase() {
             </button>
 
             {/* Bike Image */}
-            <div className="w-[260px] md:w-[550px] lg:w-[722px]">
+            <div className=" md:w-[550px] lg:w-[722px]">
               <img
                 src={bikeImages[current]}
                 alt="Bike"
                 loading="lazy"
-                className={`w-full md:w-[550px] lg:w-185 max-w-none h-auto object-contain transition-opacity duration-300 ${
+                className={` transform scale-[1.4] md:w-full h-auto object-contain transition-opacity  duration-300 ${
                   fade ? "opacity-100" : "opacity-0"
                 }`}
               />
@@ -185,19 +205,19 @@ export default function BikeShowcase() {
               onClick={nextBike}
               className="
                 absolute
-                right-[-5px]
-                md:right-[10px]
-                lg:right-5
+                right-0
+              
+                lg:right-0
                 z-10
                 flex
                 p-1
                 items-center
                 justify-center
                 rounded-sm
-                bg-[#D4373D]
-                text-white
+                  text-white
                 shadow-lg
                 transition
+                bg-red
                 hover:bg-red-600
               "
             >

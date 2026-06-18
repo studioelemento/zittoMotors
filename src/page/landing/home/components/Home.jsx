@@ -5,7 +5,7 @@ const Home = () => {
     <section
       id="home"
       style={{backgroundImage : "url('/Home Page/hero-bg.webp')"}}
-      className="relative w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-140px)]  bg-no-repeat bg-cover overflow-hidden bg-black"
+      className="relative w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-140px)]  bg-no-repeat bg-cover bg-top overflow-hidden bg-black"
     >
       {/* Background Image */}
       {/* <img
@@ -25,7 +25,7 @@ const Home = () => {
       />
 
       {/* Content */}
-      <div className="absolute left-4 sm:left-6 md:left-[21%] bottom-73  z-10 max-w-[90%]">
+      <div className="absolute  left-4  md:left-[30%] bottom-10 md:bottom-85  z-10 max-w-[90%]">
         {/* Caption */}
         <p
           className="text-white/90 font-bold tracking-nprmal  mb-2  ps-2 text-[clamp(14px,2vw,22px)]"

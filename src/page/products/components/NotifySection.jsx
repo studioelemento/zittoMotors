@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function NotifySection() {
   return (
-    <section className="relative  text-white bg-linear-[137deg] from-black from-80% to-white/20 to-100% overflow-hidden">
+    <section className="relative  text-white bg-linear-[137deg] from-black from-60% to-white/10 to-160% overflow-hidden">
       {/* Navbar */}
       {/* <nav className="fixed top-0 left-0 right-0 z-50 bg-black">
         <div className="mx-auto flex h-20 items-center justify-between px-16">
@@ -21,10 +21,10 @@ export default function NotifySection() {
       </nav> */}
 
       {/* Content */}
-      <div className="py-28">
-        <div className="relative mx-auto w-[95%]">
+      <div className="md:py-[40px] p-[15px]">
+        <div className="relative mx-0 md:mx-auto w-full md:w-[95%]">
           {/* Border Frame */}
-          <div className="relative h-[220px] border border-red-600 rounded-bl-xl rounded-br-xl">
+          <div className="relative p-12 py-[50px] px-[20px] h] border-[2px] border-[#D4373D] rounded-lg ">
             {/* Glow */}
             <div className="absolute inset-0 " />
 
@@ -32,18 +32,19 @@ export default function NotifySection() {
             <div className="relative z-10 flex h-full flex-col items-center justify-center">
               <h1
                 className="
+                saira
                   text-center
-                  text-6xl
-                  font-black
+                  text-[28px]
+                  lg:text-[60px]
+                  font-semibold
                   uppercase
-                  tracking-[0.2em]
-                  text-red-600
+                  text-[#D4373D]
                 "
               >
                 Be The First To Know
               </h1>
 
-              <p className="mt-6 max-w-2xl text-center text-white/80">
+              <p className="mt-6 dm-sans max-w-2xl text-center text-[14px] text-white/80">
                 Register below to stay in the loop and be the first to know
                 about all the electrifying updates!
               </p>
@@ -55,13 +56,14 @@ export default function NotifySection() {
                   items-center
                   gap-4
                   rounded
-                  bg-red-600
-                  px-10
-                  py-4
-                  text-xl
-                  font-semibold
+                  bg-[#D4373D]
+                  md:px-[40px]
+                  px-[30px]
+                  py-[12px]
+                  text-[14px]
+md:text-[20px]                  font-semibold
                   transition
-                  hover:bg-red-500
+                  hover:bg-[#b82e34]
                 "
               >
                 Keep me updated
@@ -98,7 +100,7 @@ export default function NotifySection() {
           w-10
           items-center
           justify-center
-          bg-red-600
+          bg-[#D4373D]
           text-white
         "
       >
