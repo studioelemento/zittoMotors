@@ -102,14 +102,14 @@ const JobCard = ({ job }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-white rounded-lg shadow-[0_0px_20px_rgba(0,0,0,0.06)] border border-gray-100 p-8 relative group hover:shadow-[0_0px_25px_rgba(0,0,0,0.1)] transition-shadow">
-      <h3 className="text-[#1e293b] text-[20px] font-bold mb-4 pr-16">{job.title}</h3>
-      <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
-         <div className="flex items-center gap-2"><Home size={16} /> <span className="text-[13px] font-medium">{job.location}</span></div>
-         <div className="flex items-center gap-2"><Briefcase size={16} /> <span className="text-[13px] font-medium">{job.type}</span></div>
+    <div className="bg-white rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2),0_6px_20px_rgba(0,0,0,0.19)] border border-gray-100 p-[20px] mb-[25px]  relative group hver:shadow-[0_0px_25px_rgba(0,0,0,0.1)] transition-shadow">
+      <h3 className="text-[#334155] text-[20px] font-bold mb-[20px] pr-16">{job.title}</h3>
+      <div className="flex items-center  text-sm text-gray-500 b-6">
+         <div className="flex items-center gap-2 pl-[5px] mb-[1.6rem] "><img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/001.png"/><span className="text-[12px] dm-sans ">{job.location}</span></div>
+         <div className="flex items-center gap-2 pl-[5px] mb-[1.6rem]"><img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/002.png"/> <span className="text-[12px] dm-sans ">{job.type}</span></div>
       </div>
-      <p className="text-[#475569] text-[14px] mb-5 leading-relaxed">{job.shortDesc}</p>
-      <p className="text-[#E33B42] text-[13px] font-semibold">{job.highlight}</p>
+      <p className="text-[#475569] dm-sans text-[12px] mb-[19.2px] leading-relaxed">{job.shortDesc}</p>
+      <p className="text-[#B00020] dm-sans text-[12px] mt-[8px] mb-[19.2px] font-semibold">{job.highlight}</p>
       
       <button 
         onClick={() => setExpanded(!expanded)}
@@ -117,54 +117,54 @@ const JobCard = ({ job }) => {
         aria-expanded={expanded}
         aria-label={expanded ? "Collapse details" : "Expand details"}
       >
-        {expanded ? <Minus size={26} className="text-white" /> : <Plus size={26} className="text-white" />}
+        {expanded ? <img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/minus.png"/> :<img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/plus.png"/>}
       </button>
 
       {expanded && (
-        <div className="mt-8 pt-8 border-t border-gray-100 animate-in fade-in duration-300">
+        <div className=" animate-in dm-sans fade-in duration-300 text-[12px]">
           {job.openPositions && (
             <div className="mb-6">
-              <p className="text-[13px] text-[#475569]"><span className="font-semibold text-[#1e293b]">Open Positions:</span> {job.openPositions}</p>
+              <p className=" text-[#475569]"><span className="font-semibold text-[#334155]">Open Positions:</span> {job.openPositions}</p>
             </div>
           )}
 
           {job.jobSummary && (
             <div className="mb-6">
-              <h4 className="text-[14px] font-semibold text-[#1e293b] mb-2">Job Summary:</h4>
-              <p className="text-[13px] text-[#475569] leading-relaxed">{job.jobSummary}</p>
+              <h4 className=" font-semibold text-[#334155] mb-2">Job Summary:</h4>
+              <p className=" text-[#475569] leading-relaxed">{job.jobSummary}</p>
             </div>
           )}
 
           {job.responsibilities && job.responsibilities.length > 0 && (
             <div className="mb-6">
-              <h4 className="text-[14px] font-semibold text-[#1e293b] mb-3">Responsibilities:</h4>
+              <h4 className=" font-semibold text-[#334155] mb-3">Responsibilities:</h4>
               <ul className="list-disc pl-5 space-y-2">
                 {job.responsibilities.map((req, idx) => (
-                  <li key={idx} className="text-[13px] text-[#475569] pl-1">{req}</li>
+                  <li key={idx} className=" text-[#475569] pl-1">{req}</li>
                 ))}
               </ul>
             </div>
           )}
 
           {job.qualifications && job.qualifications.length > 0 && (
-            <div className="mb-6">
-              <h4 className="text-[14px] font-semibold text-[#1e293b] mb-3">Qualifications:</h4>
-              <ul className="list-disc pl-5 space-y-2">
+            <div className="">
+              <h4 className=" font-semibold text-[#334155] mb-3">Qualifications:</h4>
+              <ul className="list-disc pl-5 space-y-2 my-[12px]">
                 {job.qualifications.map((qual, idx) => (
-                  <li key={idx} className="text-[13px] text-[#475569] pl-1">{qual}</li>
+                  <li key={idx} className=" text-[#475569] pl-1">{qual}</li>
                 ))}
               </ul>
             </div>
           )}
-
+          <hr className='bg-[#ccc] m-0 border-none h-1'/>
           {job.confirmations && job.confirmations.length > 0 && (
-            <div className="mb-8 pt-4 border-t border-gray-100">
-              <h4 className="text-[14px] font-semibold text-[#1e293b] mb-4">Before applying please confirm:</h4>
-              <div className="space-y-3">
+            <div className="mb-[30px]  border-t border-gray-100">
+              <h4 className=" font-semibold text-[#334155] mb-[15px]">Before applying please confirm:</h4>
+              <div className="space-y-[10px]">
                 {job.confirmations.map((conf, idx) => (
-                  <label key={idx} className="flex items-start gap-3 cursor-pointer group">
+                  <label key={idx} className="flex items-start gap-1 cursor-pointer group">
                     <input type="checkbox" className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#E33B42] focus:ring-[#E33B42]" />
-                    <span className="text-[13px] text-[#475569] leading-snug group-hover:text-[#1e293b] transition-colors">{conf}</span>
+                    <span className=" text-[#475569] leading-snug group-hover:text-[#334155] transition-colors">{conf}</span>
                   </label>
                 ))}
               </div>
@@ -189,7 +189,7 @@ const CareersPage = () => {
         path="/careers" 
       />
       {/* Hero Section */}
-      <div className="relative w-full h-[65vh] flex flex-col items-center justify-center mt-[70px]">
+      <div className="relative w-full h-[65vh] flex flex-col items-center justify-center t-[70px]">
          <div 
            className="absolute inset-0 bg-cover bg-center" 
            style={{ backgroundImage: "url('/Careers%20Page/Careers%20Hero%20image.png')" }}
@@ -214,8 +214,8 @@ const CareersPage = () => {
       </div>
 
       {/* Jobs Listing Section */}
-      <div className="w-full bg-white py-20 px-4 md:px-8">
-        <div className="max-w-[1000px] mx-auto flex flex-col gap-6">
+      <div className="w-full bg-white py-[30px] px-4 md:px-8">
+        <div className="max-w-[1140px] mx-auto flex flex-col gap-6 px-[10px]">
           {jobs.map(job => (
             <JobCard key={job.id} job={job} />
           ))}

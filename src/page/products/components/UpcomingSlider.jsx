@@ -205,7 +205,7 @@ export default function UpcomingSlider() {
 
                   {/* Content */}
                   <div className="absolute bottom-6 left-6 right-6 z-10">
-                    <h3 className="text-[#899195] text-2xl md:text-[22ox] font-bold mb-[20px]">
+                    <h3 className="text-[#899195] text-[22px] md:text-[22px] font-bold mb-[20px]">
                       {bike.title}
                     </h3>
 

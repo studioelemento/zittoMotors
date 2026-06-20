@@ -1,8 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MailPlus, X } from "lucide-react";
 
+const bikes = [
+  {
+    title: "ZITTO CRUISER",
+    image: "/ZCR Page/ZCR Section 5 Image 1.png",
+  },
+  {
+    title: "Zitto Naked Sport",
+    image: "/ZCR Page/ZCR Section 5 Image 2.png",
+  },
+  {
+    title: "Zitto Supersport",
+    image: "/ZCR Page/ZCR Section 5 Image 3.png",
+  },
+  {
+    title: "Zitto Adventure Tourer",
+    image: "/ZCR Page/ZCR Section 5 Image 4.png",
+  },
+];
+
 export default function InterestModal({ isOpen, onClose }) {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const sliderRef = useRef(null);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -15,6 +37,13 @@ export default function InterestModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const handleScroll = (e) => {
+    const slideWidth = e.target.clientWidth;
+    const index = Math.round(e.target.scrollLeft / slideWidth);
+    setActiveSlide(index);
+    console.log(activeSlide)
+  };
+
   return createPortal(
     <div className="fixed inset-0 z-[9999] overflow-y-auto">
       <div
@@ -23,12 +52,12 @@ export default function InterestModal({ isOpen, onClose }) {
       />
 
       <div
-        className="relative         bg-[linear-gradient(170deg,#000_0%,#000_38%,#D4373D_39%,#D4373D_100%)]
- flex min-h-screen items-center justify-center p-4 lg:p-8"
+        className="relative         bg-[linear-gradient(173deg,#000_0%,#000_35.5%,#D4373D_36%)]
+ min-h-screen items-center justify-center p-[10px] "
       >
         <button
           onClick={onClose}
-          className="fixed right-4 top-4 lg:right-8 lg:top-8 z-50 rounded-full bg-[#D4373D] p-2 text-black"
+          className="fixed right-4 top-4 lg:right-[5%] lg:top-8 z-50 rounded-full bg-[#D4373D] p-1 font-bold text-black"
         >
           <X size={24} />
         </button>
@@ -36,17 +65,17 @@ export default function InterestModal({ isOpen, onClose }) {
         <div
           className="
         w-full
-        max-w-7xl
+        
         overflow-hidden
         rounded-lg
       "
         >
-          <div className="px-6 py-8 lg:px-12 lg:py-12">
-            <h2 className="saira text-center text-3xl lg:text-5xl font-bold text-white/80">
+          <div className="py-8  lg:py-12">
+            <h2 className="saira text-center  lg:text-[42px] text-[20px] font-bold text-white/80">
               I AM INTERESTED
             </h2>
 
-            <p className="mx-auto mt-6 max-w-9xl text-left text-xs  text-white">
+            <p className="lg:px-[300px] px-[20px] text-center dm-sans md:mt-6 mb-[20px] max-w-9xl md:text-left text-[8px] lg:text-[12px] font-normal  text-white">
               Hold your horses! We’re not hitting the pre-booking pedal just
               yet. You can make a booking after we let you know exactly what our
               machines can do, when it is hitting the streets, and how much it
@@ -55,48 +84,112 @@ export default function InterestModal({ isOpen, onClose }) {
               details as they unfold!
             </p>
 
-            <div className="mt-10 max-w-5xl  mx-auto grid gap-8 lg:grid-cols-[1fr_auto_1fr]">
+            <div className=" w-full md:max-w-[1140px]  mx-auto grid  lg:grid-cols-[1fr_auto_1fr]">
+              {/* Mobile Slider */}
+              <div className="lg:hidden w-full overflow-auto">
+                <div
+                  ref={sliderRef}
+                  className="flex overflow-x-auto  snap-x snap-mandatory scrollbar-hide"
+                  onScroll={handleScroll}
+                >
+                  {bikes.map((bike, index) => (
+                    <div
+                      key={index}
+                      className="w-full   shrink-0 snap-start px-2"
+                    >
+                      <div
+                        className="rounded h-[200px] w-[260px]  flex items-end justify-center p-[30px] text-white saira font-semibold text-center"
+                        style={{
+                          backgroundImage: `url('${bike.image}')`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      >
+                        <p className="pt-[180 pb-[20px]">{bike.title}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Dots */}
+                <div className="mt-4 flex justify-center gap-2">
+                  {bikes.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        sliderRef.current?.scrollTo({
+                          left: sliderRef.current.offsetWidth * index,
+                          behavior: "smooth",
+                        });
+                      }}
+                      className={`h-2 w-2  rounded-full transition-all ${
+                        activeSlide === index ? "bg-black" : "bg-white"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
               {/* LEFT */}
-              <div className="grid grid-cols-2 h-max my-auto gap-4">
-                <div
-                  className="rounded relative text-white saira font-semibold text-center   bg-black  aspect-[13/9] "
-                  style={{
-                    backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 1.png')`,
-                    backgroundSize: "contain",
-                  }}
-                >
-                  {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
-                  <p className="absolute bottom-2 w-full"> ZITTO CRUISER</p>
+              <div className="hidden md:flex flex-col my-auto   pr-[20px] uppercase">
+                <div className="flex max-w-[1140px] max-w-[1140px]">
+                  <div
+                    className="rounded mr-[11px] relative w-[50%] text-white saira font-semibold text-center  h-max bg-black   "
+                    style={{
+                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 1.png')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                    }}
+                  >
+                    {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
+                    <p className=" bottom-2  pt-[120px] pb-[20px] ">
+                      {" "}
+                      ZITTO CRUISER
+                    </p>
+                  </div>
+                  <div
+                    className="rounded saira  mr-[11px] w-[50%] font-semibold relative text-center text-white bg-black  "
+                    style={{
+                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 2.png')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                    }}
+                  >
+                    {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
+                    <p className=" bottom-2 w-full pt-[120px] pb-[20px]">
+                      {" "}
+                      Zitto Naked Sport
+                    </p>
+                  </div>
                 </div>
-                <div
-                  className="rounded saira font-semibold relative text-center text-white bg-black  aspect-[13/9] "
-                  style={{
-                    backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 2.png')`,
-                    backgroundSize: "contain",
-                  }}
-                >
-                  {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
-                  <p className="absolute bottom-2 w-full"> ZITTO CRUISER</p>
-                </div>
-                <div
-                  className="rounrounded saira font-semibold relative text-center text-white bg-black aspect-[13/9] "
-                  style={{
-                    backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 3.png')`,
-                    backgroundSize: "contain",
-                  }}
-                >
-                  {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
-                  <p className="absolute  bottom-2 w-full"> ZITTO CRUISER</p>
-                </div>
-                <div
-                  className="rounded saira font-semibold relative text-center text-white bg-black aspect-[13/9] "
-                  style={{
-                    backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 4.png')`,
-                    backgroundSize: "contain",
-                  }}
-                >
-                  {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
-                  <p className="absolute bottom-2 w-full"> ZITTO CRUISER</p>
+                <div className=" flex max-w-[1140px] pt-[20px]">
+                  <div
+                    className="rounrounded w-[50%] mr-[11px] saira font-semibold relative text-center text-white bg-black  "
+                    style={{
+                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 3.png')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                    }}
+                  >
+                    {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
+                    <p className="  bottom-2 w-full pt-[120px] pb-[20px] ">
+                      {" "}
+                      Zitto Supersport
+                    </p>
+                  </div>
+                  <div
+                    className="rounded w-[50%] saira mr-[11px] font-semibold relative text-center text-white bg-black  "
+                    style={{
+                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 4.png')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                    }}
+                  >
+                    {/* <img src="/ZCR Page/ZCR Section 5 Image 1.png" alt="" className=""/> */}
+                    <p className=" bottom-2 w-full pt-[120px] pb-[20px]">
+                      {" "}
+                      Zitto Adventure Tourer
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -104,23 +197,27 @@ export default function InterestModal({ isOpen, onClose }) {
               <div className="hidden lg:block w-[2px] bg-white" />
 
               {/* RIGHT */}
-              <form className="space-y-4 gap-2 flex flex-col">
+              <form className="min-w-0 md:space-y-4 gap-2 w-full mt-6 px-[5px] flex flex-col md:pl-[20px] text-[#9F9F9F]">
+                <div className="flex gap-2 md:gap-4 md:flex-col">
                 <input
-                  className="w-full text-xs leading-0 m-0 bg-white rounded p-3 text-black"
+                  className="w-full text-[12px] leading-0 m-0 bg-white rounded p-3 te-black"
                   placeholder="Name"
                 />
                 <input
-                  className="w-full text-xs leading-0 m-0 bg-white rounded p-3 text-black"
+                  className="w-full text-[12px] leading-0 m-0 bg-white rounded p-3 "
                   placeholder="Email ID"
                 />
+                </div>
                 <input
-                  className="w-full text-xs leading-0 m-0 bg-white rounded p-3 text-black"
+                  className="w-full text-[12px] leading-0 m-0 bg-white rounded p-3 "
                   placeholder="Phone Number"
                 />
                 <div className="m-0 leading-0">
-                  <p className="text-xs">Choose your products</p>
+                  <p className="text-[10px] leading-[20px] text-[#1F2A30]">
+                    Choose your products
+                  </p>
                   <select
-                    className="w-full appearance-auto outline-0 text-xs bg-white rounded p-3 text-black"
+                    className="w-full appearance-auto outline-0 text-[12px] bg-white rounded p-3 text-black"
                     placeholder="Email ID"
                   >
                     <option value=""></option>
@@ -128,9 +225,11 @@ export default function InterestModal({ isOpen, onClose }) {
                   </select>
                 </div>
                 <div className="m-0 leading-0">
-                  <p className="text-xs">Select Country</p>
+                  <p className="text-[10px] leading-[20px] text-[#1F2A30]">
+                    Select Country
+                  </p>
                   <select
-                    className="w-full appearance-auto outline-0 m-0 leading-0 text-xs bg-white rounded p-3 text-black"
+                    className="w-full appearance-auto outline-0 m-0 leading-0 text-[12px] bg-white rounded p-3 text-black"
                     placeholder="Email ID"
                   >
                     <option value=""></option>
@@ -138,26 +237,42 @@ export default function InterestModal({ isOpen, onClose }) {
                   </select>
                 </div>
                 <div className="m-0 leading-0">
-                  <p className="text-xs">States</p>
+                  <p className="text-[10px] leading-[20px] text-[#1F2A30]">
+                    States
+                  </p>
                   <select
-                    className="w-full appearance-auto outline-0 m-0 leading-0 text-xs bg-white rounded p-3 text-black"
+                    className="w-full appearance-auto outline-0 m-0 leading-0 text-[12px] bg-white rounded p-3 text-black"
                     placeholder="Email ID"
                   >
                     <option value=""></option>
                     <option value="">Zitto Cruiser</option>
                   </select>
                 </div>
-                <div className="text-xs">
+                <div className="text-[12px] leading-[20px] dm-sans text-[#1F2A30] ">
                   <input type="checkbox" /> By checking this box, you're
                   agreeing to receive updates from Zitto via email /
                   WhatsApp.You can opt out at any time by sending us a message
-                </div>
+                </div> 
 
-                <button
+                 <button
                   type="submit"
-                  className="ms-auto rounded flex w-max gap-10 px-5 py-2 text-white bg-[#202C32] text-xl font-semibold"
+                  className="ms-auto rounded flex w-max min-h-[40px] items-center  px-[15px]  text-white bg-[#202C32] text-[16px] md:text-[20px] dm-sans font-semibold"
                 >
-                  Register Interest <MailPlus />
+                  Register Interest{" "}
+                  <span className="ml-[25px] flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="23"
+                      height="20"
+                      viewBox="0 0 29 29"
+                      fill="none"
+                    >
+                      <path
+                        d="M14.4974 15.709L4.83073 9.66732V21.7507H15.7057V24.1673H4.83073C4.16615 24.1673 3.59722 23.9307 3.12396 23.4574C2.65069 22.9842 2.41406 22.4152 2.41406 21.7507V7.25065C2.41406 6.58607 2.65069 6.01714 3.12396 5.54388C3.59722 5.07062 4.16615 4.83398 4.83073 4.83398H24.1641C24.8286 4.83398 25.3976 5.07062 25.8708 5.54388C26.3441 6.01714 26.5807 6.58607 26.5807 7.25065V15.709H24.1641V9.66732L14.4974 15.709ZM14.4974 13.2923L24.1641 7.25065H4.83073L14.4974 13.2923ZM22.9557 27.7923L21.2641 26.1007L23.1672 24.1673H18.1224V21.7507H23.1672L21.2339 19.8173L22.9557 18.1257L27.7891 22.959L22.9557 27.7923ZM4.83073 9.66732V22.959V15.709V15.7996V7.25065V9.66732Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
                 </button>
               </form>
             </div>
