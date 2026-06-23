@@ -9,10 +9,12 @@ import CareersPage from "./page/careers/CareersPage";
 import CareerSubmission from "./page/careers/CareerSubmission";
 import InterestModal from "./page/landing/home/components/InterestModal";
 import { InterestProvider } from "./context/InterestContext";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <HelmetProvider>
+      <ScrollToTop>
       <InterestProvider>
         <BrowserRouter>
           <Navbar />
@@ -28,6 +30,7 @@ const App = () => {
           </div>
         </BrowserRouter>
       </InterestProvider>
+      </ScrollToTop>
     </HelmetProvider>
   );
 };
