@@ -14,23 +14,25 @@ import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   return (
     <HelmetProvider>
-      <ScrollToTop>
       <InterestProvider>
         <BrowserRouter>
-          <Navbar />
-          <div className="pt-[85px] md:pt-[100px]">
-            {/* page content */}
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/zcr" element={<ProductPage />} />
-              <Route path="/about" element={<AboutSection />} />
-              <Route path="/careers" element={<CareersPage />} />
-              <Route path="/career-submission" element={<CareerSubmission />} />
-            </Routes>
-          </div>
+          <ScrollToTop/>
+            <Navbar />
+            <div className="pt-[85px] md:pt-[100px]">
+              {/* page content */}
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/zcr" element={<ProductPage />} />
+                <Route path="/about" element={<AboutSection />} />
+                <Route path="/careers" element={<CareersPage />} />
+                <Route
+                  path="/career-submission"
+                  element={<CareerSubmission />}
+                />
+              </Routes>
+            </div>
         </BrowserRouter>
       </InterestProvider>
-      </ScrollToTop>
     </HelmetProvider>
   );
 };
