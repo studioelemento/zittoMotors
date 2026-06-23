@@ -1,6 +1,9 @@
 import { ChevronRight } from "lucide-react";
+import { useContext } from "react";
+import { InterestContext } from "../../../context/InterestContext";
 
 export default function NotifySection() {
+  const {handleShowInterestModal} = useContext(InterestContext)
   return (
     <section className="relative  text-white bg-linear-[137deg] from-black from-60% to-white/10 to-160% overflow-hidden">
       {/* Navbar */}
@@ -50,6 +53,7 @@ export default function NotifySection() {
               </p>
 
               <button
+              onClick={handleShowInterestModal}
                 className="
                   mt-8
                   flex

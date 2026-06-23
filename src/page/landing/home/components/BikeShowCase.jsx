@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ArrowLeft, ArrowRight, HeartPlusIcon } from "lucide-react";
 import InterestModal from "./InterestModal";
+import { InterestContext } from "../../../../context/InterestContext";
 
 const bikeImages = [
   "/Home Page/Section 2 Image 1.png",
@@ -10,8 +11,8 @@ const bikeImages = [
 
 export default function BikeShowcase() {
   const [current, setCurrent] = useState(0);
-  const [showInterestModal, setShowInterestModal] = useState(false);
   const [fade, setFade] = useState(true);
+  const {handleShowInterestModal} = useContext(InterestContext)
 
   const changeBike = (newIndex) => {
     setFade(false);
@@ -101,7 +102,7 @@ export default function BikeShowcase() {
               "
             >
               <button
-                onClick={() => setShowInterestModal(true)}
+                onClick={handleShowInterestModal}
                 className="
                   rounded
                   flex
@@ -227,10 +228,7 @@ export default function BikeShowcase() {
         </div>
       </div>
 
-      <InterestModal
-        isOpen={showInterestModal}
-        onClose={() => setShowInterestModal(false)}
-      />
+  
     </section>
   );
 }

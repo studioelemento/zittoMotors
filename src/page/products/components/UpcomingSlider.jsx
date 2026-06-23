@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { ChevronLeft, ChevronRight, Heart, HeartPlus } from "lucide-react";
+import { InterestContext } from "../../../context/InterestContext";
 
 const bikes = [
   {
@@ -29,6 +30,7 @@ const bikes = [
 ];
 
 export default function UpcomingSlider() {
+  const {handleShowInterestModal} = useContext(InterestContext)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(3);
 
@@ -190,6 +192,7 @@ export default function UpcomingSlider() {
 
                   {/* Heart Button */}
                   <button
+                  onClick={handleShowInterestModal}
                     className="
                       absolute top-4 right-4
                       py-[5px] ps-[12px] pe-[12px]

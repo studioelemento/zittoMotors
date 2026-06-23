@@ -45,14 +45,14 @@ export default function InterestModal({ isOpen, onClose }) {
   };
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] overflow-y-auto">
+    <div className="fixed inset-0 z-[9999]  overflow-y-auto">
       <div
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
         onClick={onClose}
       />
 
       <div
-        className="relative         bg-[linear-gradient(173deg,#000_0%,#000_35.5%,#D4373D_36%)]
+        className="relative   flex      bg-[linear-gradient(173deg,#000_0%,#000_35.5%,#D4373D_36%)]
  min-h-screen items-center justify-center p-[10px] "
       >
         <button
@@ -194,11 +194,11 @@ export default function InterestModal({ isOpen, onClose }) {
               </div>
 
               {/* Divider */}
-              <div className="hidden lg:block w-[2px] bg-white" />
+              <div className="hidden lg:block w-[1px] bg-white" />
 
               {/* RIGHT */}
-              <form className="min-w-0 md:space-y-4 gap-2 w-full mt-6 px-[5px] flex flex-col md:pl-[20px] text-[#9F9F9F]">
-                <div className="flex gap-2 md:gap-4 md:flex-col">
+              <form className="min-w-0  gap-2 w-full mt-6  md:mt-0 px-[5px] flex flex-col md:pl-[20px] text-[#9F9F9F]">
+                <div className="flex gap-2 md:gap-2 md:flex-col">
                 <input
                   className="w-full text-[12px] leading-0 m-0 bg-white rounded p-3 te-black"
                   placeholder="Name"

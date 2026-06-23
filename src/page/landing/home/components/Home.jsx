@@ -5,7 +5,7 @@ const Home = () => {
     <section
       id="home"
       style={{backgroundImage : "url('/Home Page/hero-bg.webp')"}}
-      className="relative w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-140px)]  bg-no-repeat bg-cover bg-top overflow-hidden bg-black"
+      className="relative w-full min-h-[calc(100vh-80px)] md:min-h-[85vh]  flex items-end md:items-center bg-no-repeat bg-cover bg-top overflow-hidden bg-black"
     >
       {/* Background Image */}
       {/* <img
@@ -16,31 +16,33 @@ const Home = () => {
       /> */}
 
       {/* Overlay */}
-      <div
+      {/* <div
         className="absolute inset-0"
         style={{
           background:
             "linear-gradient(to right, rgba(0,0,0,0.25) 0%, transparent 60%)",
         }}
-      />
+      /> */}
 
       {/* Content */}
-      <div className="absolute  left-4  md:left-[30%] bottom-10 md:bottom-85  z-10 max-w-[90%]">
+      <div className="w-full px-[20px] md:ps-[80px]">
+      <div className=" max-w-[1140px]  z-10 mx-auto *:block">
         {/* Caption */}
         <p
-          className="text-white/90 font-bold tracking-nprmal  mb-2  ps-2 text-[clamp(14px,2vw,22px)]"
+          className="text-[#FFFFFFBA] font-bold tracking-nprmal block mb-[20px] md:mb-2  ps-2 text-[clamp(16px,2vw,22px)]"
         >
           For a different breed of motorcycle users.
         </p>
 
         {/* Heading */}
         <p
-          className="text-white/80 saira font-bold uppercase leading-none md:leading-[91px] text-[clamp(3rem,10vw,7.5rem)]"
+          className="text-[#FFFFFFBA] saira font-bold uppercase mb-[40px] leading-none md:leading-[91px] text-[clamp(3rem,10vw,7.5rem)]"
           // style={{ fontFamily: "Saira, sans-serif" }}
         >
           FOR THE <br />
           ENTHUSIAST
         </p>
+      </div>
       </div>
 
       {/* Mobile Scroll Arrow */}

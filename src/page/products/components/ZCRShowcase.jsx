@@ -1,5 +1,6 @@
 import { HeartPlusIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { InterestContext } from "../../../context/InterestContext";
 
 const images = [
   "/ZCR Page/ZCR Hero Image 1.png",
@@ -10,6 +11,7 @@ const images = [
 
 export default function ZCRShowcase() {
   const [index, setIndex] = useState(0);
+  const {handleShowInterestModal} = useContext(InterestContext)
   const [animate, setAnimate] = useState(false);
   console.log(animate);
   const changeSlide = (direction) => {
@@ -136,6 +138,7 @@ md:right-[155px]
       {/* Wishlist */}
       <div className="absolute bottom-1/5 left-1/2 -translate-x-1/2 z-100">
         <button
+        onClick={handleShowInterestModal}
           className="
             border
             border-red-500
