@@ -1,4 +1,4 @@
-import { HeartPlusIcon } from "lucide-react";
+import { HeartPlusIcon, ArrowLeft, ArrowRight } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { InterestContext } from "../../../context/InterestContext";
 
@@ -71,31 +71,26 @@ export default function ZCRShowcase() {
         onClick={() => changeSlide("prev")}
         className="
           absolute
-          left-0
+          left-4
           top-1/3
           md:top-[354px]
           md:left-[155px]
           -translate-y-1/2
-          h-[25px]
-          w-[29px]
-          md:h-[36px]
-          md:w-[36px]
-          p-1
-          bg-red
-          text-white
+          z-30
           flex
+          p-1
           items-center
           justify-center
-          rounded-[3px]
-          z-20
+          rounded-sm
+          bg-[#D4373D]
+          text-white
+          shadow-lg
+          transition
+          hover:bg-red-600
+          cursor-pointer
         "
       >
-        <svg viewBox="0 0 29.729 25.458" fill="white">
-          <path
-            d="M0,12.023H0L12.02,0l2.829,2.829L7.655,10.022H28.522v4H7.656l7.193,7.194L12.02,24.044Z"
-            transform="translate(0.707 0.707)"
-          ></path>
-        </svg>{" "}
+        <ArrowLeft size={18} />
       </button>
 
       {/* Right Arrow */}
@@ -103,36 +98,26 @@ export default function ZCRShowcase() {
         onClick={() => changeSlide("next")}
         className="
           absolute
-          right-0
+          right-4
           top-1/3
-                    md:top-[354px]
-md:right-[155px]
+          md:top-[354px]
+          md:right-[155px]
           -translate-y-1/2
-          h-[25px]
-          w-[29px]
-          md:h-[36px]
-          md:w-[36px]
-          p-1
-          bg-red
-          text-white
+          z-30
           flex
+          p-1
           items-center
           justify-center
-          rounded-[3px]
-          z-20
+          rounded-sm
+          bg-[#D4373D]
+          text-white
+          shadow-lg
+          transition
+          hover:bg-red-600
+          cursor-pointer
         "
       >
-        <svg
-          width="29px"
-          fill="white"
-          height="25px"
-          viewBox="0 0 29.729 25.457"
-        >
-          <path
-            d="M13.672,21.215l7.193-7.194H0v-4H20.866L13.673,2.829,16.5,0l12.02,12.02h0L16.5,24.043Z"
-            transform="translate(0.5 0.707)"
-          ></path>
-        </svg>{" "}
+        <ArrowRight size={18} />
       </button>
 
       {/* Wishlist */}

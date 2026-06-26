@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const features = [
   {
@@ -23,25 +24,60 @@ const features = [
 
 export default function FeatureCards() {
   const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      changeSlide("next");
+    } else if (isRightSwipe) {
+      changeSlide("prev");
+    }
+  };
 
   const changeSlide = (direction) => {
-    setIndex((prev) =>
-      direction === "next"
-        ? (prev + 1) % features.length
-        : (prev - 1 + features.length) % features.length,
-    );
+    setFade(false);
+    setTimeout(() => {
+      setIndex((prev) =>
+        direction === "next"
+          ? (prev + 1) % features.length
+          : (prev - 1 + features.length) % features.length,
+      );
+      setFade(true);
+    }, 250);
   };
 
   return (
     <section className="bg-white">
       {/* Mobile Slider */}
-      <div className="relative md:hidden h-[473px]  w-full overflow-hidden">
+      <div 
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        className="relative md:hidden h-[473px]  w-full overflow-hidden cursor-grab active:cursor-grabbing select-none"
+      >
         <div className="group relative h-full">
           <img
             key={index}
             src={features[index].image}
             alt={features[index].title}
-            className="absolute inset-0 h-full w-full object-cover animate-bike-enter"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
           />
 
           <div className="absolute inset-0 bg-black/30" />
@@ -49,11 +85,11 @@ export default function FeatureCards() {
           <div
             className="absolute                       --y-1/2translate
   top-[329px]
- left-10 z-10 w-min "
+  left-10 z-10 w-min px-4 "
           >
             <h3
               className=" saira
-                  text-[18px]
+                  text-[19px]
                   w-full
                   leading-none
                   text-nowrap
@@ -67,77 +103,26 @@ export default function FeatureCards() {
               {features[index].title}
             </h3>
 
-            <p className="mt-3 text-[9px] leading- dm-sans text-white">
+            <p className="mt-3 text-[10px] dm-sans text-white">
               {features[index].description}
             </p>
           </div>
         </div>
 
-        {/* Left Arrow */}z
+        {/* Left Arrow */}
         <button
           onClick={() => changeSlide("prev")}
-          className="
-            absolute
-            left-0
-            top-[339px]
-            -translate-y-1/2
-            h-[25px]
-            w-[20px]
-            p-1
-            bg-red
-            text-white
-            flex
-            items-center
-            justify-center
-            rounded-[3px]
-            z-20
-          "
+          className="absolute left-4 top-[339px] -translate-y-1/2 z-30 flex p-1 items-center justify-center rounded-sm bg-[#D4373D] text-white shadow-lg transition hover:bg-red-600 cursor-pointer"
         >
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 29.729 25.458"
-            fill="white"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <path
-              d="M0,12.023H0L12.02,0l2.829,2.829L7.655,10.022H28.522v4H7.656l7.193,7.194L12.02,24.044Z"
-              transform="translate(0.707 0.707)"
-            />
-          </svg>
+          <ArrowLeft size={18} />
         </button>
 
         {/* Right Arrow */}
         <button
           onClick={() => changeSlide("next")}
-          className="
-            absolute
-            right-0
-            top-[339px]
-            -translate-y-1/2
-            h-[25px]
-            w-[20px]
-            p-1
-            
-            bg-red
-            text-white
-            flex
-            items-center
-            justify-center
-            rounded-[3px]
-            z-20
-          "
+          className="absolute right-4 top-[339px] -translate-y-1/2 z-30 flex p-1 items-center justify-center rounded-sm bg-[#D4373D] text-white shadow-lg transition hover:bg-red-600 cursor-pointer"
         >
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 29.729 25.458"
-            fill="white"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <path
-              d="M13.672,21.215l7.193-7.194H0v-4H20.866L13.673,2.829,16.5,0l12.02,12.02h0L16.5,24.043Z"
-              transform="translate(0.5 0.707)"
-            />
-          </svg>
+          <ArrowRight size={18} />
         </button>
 
         {/* Dots */}

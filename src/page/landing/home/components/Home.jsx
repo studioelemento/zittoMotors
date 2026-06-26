@@ -4,8 +4,7 @@ const Home = () => {
   return (
     <section
       id="home"
-      style={{backgroundImage : "url('/Home Page/hero-bg.webp')"}}
-      className="relative w-full min-h-[calc(100vh-80px)] md:min-h-[85vh]  flex items-end md:items-center bg-no-repeat bg-cover bg-top overflow-hidden bg-black"
+      className="hero-bg relative w-full min-h-[calc(100vh-80px)] md:min-h-[85vh]  flex items-end md:items-center bg-no-repeat bg-cover bg-top overflow-hidden bg-black"
     >
       {/* Background Image */}
       {/* <img
@@ -25,11 +24,11 @@ const Home = () => {
       /> */}
 
       {/* Content */}
-      <div className="w-full px-[20px] md:ps-[80px]">
+      <div className="w-full px-[20px] pb-[80px] md:pb-0 md:ps-[80px]">
       <div className=" max-w-[1140px]  z-10 mx-auto *:block">
         {/* Caption */}
         <p
-          className="text-[#FFFFFFBA] font-bold tracking-nprmal block mb-[20px] md:mb-2  ps-2 text-[clamp(16px,2vw,22px)]"
+          className="text-[#FFFFFFBA] font-bold tracking-nprmal block mb-[20px] md:mb-2 ps-0 md:ps-2 text-[clamp(16px,2vw,22px)]"
         >
           For a different breed of motorcycle users.
         </p>

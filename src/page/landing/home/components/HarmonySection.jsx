@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function HarmonySection() {
   return (
-    <section className="flex md:w-screen md:h-screen relative overflow-hidden bg-black ">
+    <section className="flex w-full md:h-screen relative overflow-hidden bg-black ">
       <div className="absolute inset-0 bg-[linear-gradient(159deg,_rgb(0,0,0)_39%,_rgb(255,255,255)_300%)] from-black \ to-zinc-900" />
 
       <div className="flex max-w-[1140px] relative mx-auto my-auto  items-center  md:px-6">

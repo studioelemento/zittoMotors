@@ -21,13 +21,47 @@ const features = [
 
 export default function FeatureCards() {
   const [currentFeature, setCurrentFeature] = useState(0);
+  const [fade, setFade] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      nextFeature();
+    } else if (isRightSwipe) {
+      prevFeature();
+    }
+  };
+
+  const changeFeature = (newIndex) => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrentFeature(newIndex);
+      setFade(true);
+    }, 250);
+  };
 
   const nextFeature = () => {
-    setCurrentFeature((prev) => (prev + 1) % features.length);
+    changeFeature((currentFeature + 1) % features.length);
   };
 
   const prevFeature = () => {
-    setCurrentFeature((prev) => (prev - 1 + features.length) % features.length);
+    changeFeature((currentFeature - 1 + features.length) % features.length);
   };
   return (
     <section className="bg-white">
@@ -37,17 +71,22 @@ export default function FeatureCards() {
         {/* Left Arrow */}
         <button
           onClick={prevFeature}
-          className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-sm bg-[#D4373D] p-2 text-white shadow-lg"
+          className="absolute left-4 top-1/2 z-30 -translate-y-1/2 flex p-1 items-center justify-center rounded-sm bg-[#D4373D] text-white shadow-lg transition hover:bg-red-600 cursor-pointer"
         >
           <ArrowLeft size={18} />
         </button>
 
         {/* Card */}
-        <div className="relative h-[520px] overflow-hidden">
+        <div 
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          className="relative h-[520px] overflow-hidden cursor-grab active:cursor-grabbing select-none"
+        >
           <img
             src={features[currentFeature].image}
             alt={features[currentFeature].title}
-            className="absolute inset-0 h-full w-full object-cover"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
           />
 
           <div className="absolute inset-0 bg-black/50" />
@@ -67,7 +106,7 @@ export default function FeatureCards() {
         {/* Right Arrow */}
         <button
           onClick={nextFeature}
-          className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-sm bg-[#D4373D] p-2 text-white shadow-lg"
+          className="absolute right-4 top-1/2 z-30 -translate-y-1/2 flex p-1 items-center justify-center rounded-sm bg-[#D4373D] text-white shadow-lg transition hover:bg-red-600 cursor-pointer"
         >
           <ArrowRight size={18} />
         </button>
@@ -116,7 +155,7 @@ export default function FeatureCards() {
                   group-hover:-translate-y-40
                 "
               >
-                {feature.title.split(' ').reduce((acc, word, index)=> index === 0 ? [word] : [...acc, <br />, word],[])} 
+                {feature.title.split(' ').reduce((acc, word, index) => index === 0 ? [word] : [...acc, <br />, word], [])}
               </h3>
 
               <p

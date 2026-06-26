@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { ChevronLeft, ChevronRight, Heart, HeartPlus } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, HeartPlus } from "lucide-react";
 import { InterestContext } from "../../../context/InterestContext";
 
 const bikes = [
@@ -33,6 +33,31 @@ export default function UpcomingSlider() {
   const {handleShowInterestModal} = useContext(InterestContext)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(3);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      prev();
+    }
+  };
 
   const sliderRef = useRef(null);
   const [translateX, setTranslateX] = useState(0);
@@ -73,11 +98,11 @@ export default function UpcomingSlider() {
 
   console.log(currentIndex, cardsPerView, bikes.length, maxIndex);
   const next = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, bikes.length - cardsPerView));
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const prev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
   const translatePercentage = 100 / cardsPerView;
@@ -109,49 +134,62 @@ export default function UpcomingSlider() {
           {/* Left Arrow */}
           <button
             onClick={prev}
-            disabled={currentIndex === 0}
             className="
               absolute
-              left-0
+              left-4
               top-1/2
               -translate-y-1/2
-              z-20
-              w-9 h-9
-              md:w-12 md:h-12
-              bg-red
+              z-30
+              flex
+              p-1
+              items-center
+              justify-center
+              rounded-sm
+              bg-[#D4373D]
               text-white
-              rounded-md
-              flex items-center justify-center
+              shadow-lg
+              transition
+              hover:bg-red-600
+              cursor-pointer
               disabled:opacity-40
             "
           >
-            <ChevronLeft size={24} />
+            <ArrowLeft size={18} />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={next}
-            disabled={currentIndex == maxIndex}
             className="
               absolute
-              right-0
+              right-4
               top-1/2
               -translate-y-1/2
-              z-20
-              w-9 h-9
-              md:w-12 md:h-12
-              bg-red
+              z-30
+              flex
+              p-1
+              items-center
+              justify-center
+              rounded-sm
+              bg-[#D4373D]
               text-white
-              rounded-md
-              flex items-center justify-center
+              shadow-lg
+              transition
+              hover:bg-red-600
+              cursor-pointer
               disabled:opacity-40
             "
           >
-            <ChevronRight size={24} />
+            <ArrowRight size={18} />
           </button>
 
           {/* Slider Container */}
-          <div className="overflow-hidden px-0 md:pe-16">
+          <div 
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            className="overflow-hidden px-0 md:pe-16 cursor-grab active:cursor-grabbing select-none"
+          >
             <div
               ref={sliderRef}
               className="flex gap-4 transition-transform duration-500 ease-out"
@@ -181,7 +219,8 @@ export default function UpcomingSlider() {
                     className="
                       absolute inset-0
                       w-full h-full
-                      object-cover
+                      object-contain
+                      md:object-cover
                       transition duration-500
                       group-hover:scale-105
                     "

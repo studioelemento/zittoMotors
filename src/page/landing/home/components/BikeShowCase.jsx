@@ -14,6 +14,32 @@ export default function BikeShowcase() {
   const [fade, setFade] = useState(true);
   const {handleShowInterestModal} = useContext(InterestContext)
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      nextBike();
+    } else if (isRightSwipe) {
+      prevBike();
+    }
+  };
+
   const changeBike = (newIndex) => {
     setFade(false);
 
@@ -32,7 +58,7 @@ export default function BikeShowcase() {
   };
 
   return (
-    <section className="bg-white py-12 md:py-16 lg:p-[7vw]">
+    <section className="bg-white py-12 md:py-16 lg:p-[7vw] overflow-hidden">
       <div className="mx-auto w-full max-w-[1140px]">
         <div className="flex flex-col-reverse lg:flex-row items-center mt-[80px] md:mt-[120px] lg:mt-0">
           {/* LEFT CONTENT */}
@@ -170,10 +196,10 @@ export default function BikeShowcase() {
               onClick={prevBike}
               className="
                 absolute
-                left-0
+                left-4
                 md:left-2
                 lg:left-5
-                z-10
+                z-30
                 flex
                 p-1
                 items-center
@@ -184,18 +210,24 @@ export default function BikeShowcase() {
                 shadow-lg
                 transition
                 hover:bg-red-600
+                cursor-pointer
               "
             >
               <ArrowLeft size={18} />
             </button>
 
             {/* Bike Image */}
-            <div className=" md:w-[550px] lg:w-[722px]">
+            <div 
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              className="w-[95%] md:w-[550px] lg:w-[722px] cursor-grab active:cursor-grabbing select-none"
+            >
               <img
                 src={bikeImages[current]}
                 alt="Bike"
                 loading="lazy"
-                className={` transform scale-[1.4] md:w-full h-auto object-contain transition-opacity  duration-300 ${
+                className={`transform md:scale-[1.4] scale-100 w-full h-auto object-contain transition-opacity duration-300 ${
                   fade ? "opacity-100" : "opacity-0"
                 }`}
               />
@@ -206,20 +238,21 @@ export default function BikeShowcase() {
               onClick={nextBike}
               className="
                 absolute
-                right-0
-              
+                right-4
+                md:right-2
                 lg:right-0
-                z-10
+                z-30
                 flex
                 p-1
                 items-center
                 justify-center
                 rounded-sm
-                  text-white
+                text-white
                 shadow-lg
                 transition
                 bg-red
                 hover:bg-red-600
+                cursor-pointer
               "
             >
               <ArrowRight size={18} />

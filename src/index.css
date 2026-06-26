@@ -29,3 +29,12 @@ html,body {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+.hero-bg {
+  background-image: url('/Home Page/hero-bg-mobile.webp');
+}
+@media (min-width: 768px) {
+  .hero-bg {
+    background-image: url('/Home Page/hero-bg.webp');
+  }
+}
