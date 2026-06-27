@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, HeartPlusIcon } from "lucide-react";
 import InterestModal from "./InterestModal";
@@ -41,22 +41,32 @@ export default function BikeShowcase() {
     }
   };
 
-  const changeBike = (newIndex) => {
-    if (!fade) return;
+  const isAnimating = useRef(false);
+
+  const changeBike = (direction) => {
+    if (isAnimating.current) return;
+    isAnimating.current = true;
     setFade(false);
 
     setTimeout(() => {
-      setCurrent(newIndex);
+      setCurrent((prev) => 
+        direction === 'next' 
+          ? (prev + 1) % bikeImages.length 
+          : (prev - 1 + bikeImages.length) % bikeImages.length
+      );
       setFade(true);
-    }, 250);
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 300); // Wait for fade in transition to complete before unlocking
+    }, 250); // Wait for fade out
   };
 
   const nextBike = () => {
-    changeBike((current + 1) % bikeImages.length);
+    changeBike('next');
   };
 
   const prevBike = () => {
-    changeBike((current - 1 + bikeImages.length) % bikeImages.length);
+    changeBike('prev');
   };
 
   return (
