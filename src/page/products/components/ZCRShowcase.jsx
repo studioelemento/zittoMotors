@@ -6,7 +6,6 @@ const images = [
   "/ZCR Page/ZCR Hero Image 1.png",
   "/ZCR Page/ZCR Hero Image 2.png",
   "/ZCR Page/ZCR Hero Image 3.png",
-  "/bike-4.png",
 ];
 
 export default function ZCRShowcase() {
@@ -26,12 +25,42 @@ export default function ZCRShowcase() {
     }, 50);
   };
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      changeSlide("next");
+    } else if (isRightSwipe) {
+      changeSlide("prev");
+    }
+  };
+
   useEffect(() => {
     setAnimate(true);
   }, []);
 
   return (
-    <section className="relative  h-[740px] overflow-hidden bg-black cursor-pointer">
+    <section 
+      className="relative  h-[740px] overflow-hidden bg-black cursor-pointer"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {/* ZCR */}
       <div
         className={`absolute inset-0 z-1 flex items-start justify-center
@@ -56,6 +85,7 @@ export default function ZCRShowcase() {
           key={index}
           src={images[index]}
           alt=""
+          fetchPriority={index === 0 ? "high" : "auto"}
           className="
             w-full
             h-[740px]

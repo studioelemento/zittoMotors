@@ -22,29 +22,29 @@ const Navbar = () => {
       <div className="md:mx-auto md:w-[91%] h-full flex py-3 items-center justify-between px-6 lg:px-16">
         {/* Logo */}
         <div className="flex items-center h-full">
-         <Link to="/" className="h-full flex items-center relative">
-  {/* Full Logo */}
-  <img
-    src="/Logo/logoWithText.png"
-    alt="Zitto"
-    className={`absolute left-0 object-contain  ease-in-out
+          <Link to="/" className="h-full flex items-center relative">
+            {/* Full Logo */}
+            <img
+              src="/Logo/logoWithText.png"
+              alt="Zitto"
+              className={`absolute left-0 object-contain  ease-in-out
       ${atTop
-        ? "opacity-100 scale-100 h-full"
-        : "opacity-0 scale-90 h-[80%]"
-      }`}
-  />
+                  ? "opacity-100 scale-100 h-full"
+                  : "opacity-0 scale-90 h-[80%]"
+                }`}
+            />
 
-  {/* Icon Logo */}
-  <img
-    src="/Logo/logoWithoutText.png"
-    alt="Zitto"
-    className={`object-contain 7 ease-in-out
+            {/* Icon Logo */}
+            <img
+              src="/Logo/logoWithoutText.png"
+              alt="Zitto"
+              className={`object-contain 100 ease-in-out
       ${atTop
-        ? "opacity-0 scale-90 w-[20%]"
-        : "opacity-100 scale-100 w-[30%] md:h-full md:w-auto "
-      }`}
-  />
-</Link>
+                  ? "opacity-0 scale-0 w-[20%]"
+                  : "opacity-100 scale-100 w-[30%] md:h-full md:w-auto "
+                }`}
+            />
+          </Link>
         </div>
 
         {/* Desktop Navigation Links */}
@@ -82,11 +82,10 @@ const Navbar = () => {
 
       {/* Mobile Full-Screen Overlay Menu */}
       <div
-        className={`fixed top-0 left-0 w-full z-[100] bg-black h-64 flex flex-col px-8 py-6 transform transition-all duration-400 ease-out ${
-          isOpen
+        className={`fixed top-0 left-0 w-full z-[100] bg-black h-64 flex flex-col px-8 py-6 transform transition-all duration-400 ease-out ${isOpen
             ? "translate-y-0 opacity-100 pointer-events-auto shadow-2xl"
             : "-translate-y-full opacity-0 pointer-events-none"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between">
           <img

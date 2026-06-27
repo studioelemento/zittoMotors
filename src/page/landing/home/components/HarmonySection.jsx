@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function HarmonySection() {
   return (
@@ -24,7 +25,7 @@ export default function HarmonySection() {
               innovation.
             </p>
 
-            <button className="mt-4  dm-sans flex items-center text-[16px] gap-4 rounded bg-[#D4373D] py-[10px] ps-[15px] pe-[20px] md:px-[30px] md:py-[15px] text-white transition hover:bg-red-700">
+            <Link to="/zcr" className="mt-4  w-fit dm-sans flex items-center text-[16px] gap-4 rounded bg-[#D4373D] py-[10px] ps-[15px] pe-[20px] md:px-[30px] md:py-[15px] text-white transition hover:bg-red-700">
               Show me more
               <span className="ml-[90px] ">
                 <svg
@@ -40,7 +41,7 @@ export default function HarmonySection() {
                   ></path>
                 </svg>{" "}
               </span>
-            </button>
+            </Link>
           </div>
 
           {/* Right Image */}

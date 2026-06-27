@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,20 +52,21 @@ export default function Footer() {
       <div className="relative top-0 left-0 h-[48px] bg-[#D4373D] w-full md:w-[48%] z-10 flex items-center justify-center md:justify-start md:[clip-path:polygon(0_0,100%_0,calc(100%-100px)_100%,0_100%)]">
         <ul className="flex items-center dm-sans  font-semibold md:text-[20px] md:pl-[100px] ">
           <li>
-            <a
-              href="#about"
-              className="hover:text-gray-200 transition-colors px-[20px] py-[13px]"
-            >
-              About
-            </a>
-          </li>
+                      <HashLink
+                        smooth
+                        to="/#about"
+                        className="transition flex justify-center  hover:text-gray-300"
+                      >
+                        About
+                      </HashLink>
+                    </li>
           <li>
-            <a
-              href="#products"
+            <Link
+              to="/zcr"
               className="hover:text-gray-200 transition-colors px-[20px] py-[13px]"
             >
               Products
-            </a>
+            </Link>
           </li>
           <li>
             <Link

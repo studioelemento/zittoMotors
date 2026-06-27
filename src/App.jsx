@@ -18,7 +18,8 @@ const App = () => {
         <BrowserRouter>
           <ScrollToTop/>
             <Navbar />
-            <div className="pt-[85px] md:pt-[100px]">
+            <div className="pt-[85px] md:pt-[100px] bg-black"></div>
+            <div className="-mt-[85px] md:-mt-[100px] pt-[85px] md:pt-[100px]">
               {/* page content */}
               <Routes>
                 <Route path="/" element={<HomePage />} />

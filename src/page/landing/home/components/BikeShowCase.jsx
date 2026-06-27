@@ -216,7 +216,6 @@ export default function BikeShowcase() {
               <ArrowLeft size={18} />
             </button>
 
-            {/* Bike Image */}
             <div 
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
@@ -226,8 +225,8 @@ export default function BikeShowcase() {
               <img
                 src={bikeImages[current]}
                 alt="Bike"
-                loading="lazy"
-                className={`transform md:scale-[1.4] scale-100 w-full h-auto object-contain transition-opacity duration-300 ${
+                fetchPriority={current === 0 ? "high" : "auto"}
+                className={`transform md:scale-[1.4] scale-100 w-full h-[260px] md:h-auto object-contain transition-opacity duration-300 ${
                   fade ? "opacity-100" : "opacity-0"
                 }`}
               />
