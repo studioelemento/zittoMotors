@@ -42,6 +42,7 @@ export default function BikeShowcase() {
   };
 
   const changeBike = (newIndex) => {
+    if (!fade) return;
     setFade(false);
 
     setTimeout(() => {
@@ -201,6 +202,8 @@ export default function BikeShowcase() {
                 left-4
                 md:left-2
                 lg:left-5
+                top-1/2
+                -translate-y-1/2
                 z-30
                 flex
                 p-1
@@ -242,6 +245,8 @@ export default function BikeShowcase() {
                 right-4
                 md:right-2
                 lg:right-0
+                top-1/2
+                -translate-y-1/2
                 z-30
                 flex
                 p-1
@@ -251,7 +256,7 @@ export default function BikeShowcase() {
                 text-white
                 shadow-lg
                 transition
-                bg-red
+                bg-[#D4373D]
                 hover:bg-red-600
                 cursor-pointer
               "
