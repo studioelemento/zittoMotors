@@ -12,7 +12,6 @@ const bikeImages = [
 
 export default function BikeShowcase() {
   const [current, setCurrent] = useState(0);
-  const [fade, setFade] = useState(true);
   const {handleShowInterestModal} = useContext(InterestContext)
 
   const [touchStart, setTouchStart] = useState(null);
@@ -41,32 +40,12 @@ export default function BikeShowcase() {
     }
   };
 
-  const isAnimating = useRef(false);
-
-  const changeBike = (direction) => {
-    if (isAnimating.current) return;
-    isAnimating.current = true;
-    setFade(false);
-
-    setTimeout(() => {
-      setCurrent((prev) => 
-        direction === 'next' 
-          ? (prev + 1) % bikeImages.length 
-          : (prev - 1 + bikeImages.length) % bikeImages.length
-      );
-      setFade(true);
-      setTimeout(() => {
-        isAnimating.current = false;
-      }, 300); // Wait for fade in transition to complete before unlocking
-    }, 250); // Wait for fade out
-  };
-
   const nextBike = () => {
-    changeBike('next');
+    setCurrent((prev) => (prev + 1) % bikeImages.length);
   };
 
   const prevBike = () => {
-    changeBike('prev');
+    setCurrent((prev) => (prev - 1 + bikeImages.length) % bikeImages.length);
   };
 
   return (
@@ -235,16 +214,22 @@ export default function BikeShowcase() {
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
-              className="w-[95%] md:w-[550px] lg:w-[722px] cursor-grab active:cursor-grabbing select-none"
+              className="w-[95%] md:w-[550px] lg:w-[722px] overflow-hidden cursor-grab active:cursor-grabbing select-none"
             >
-              <img
-                src={bikeImages[current]}
-                alt="Bike"
-                fetchPriority={current === 0 ? "high" : "auto"}
-                className={`transform md:scale-[1.4] scale-100 w-full h-[260px] md:h-auto object-contain transition-opacity duration-300 ${
-                  fade ? "opacity-100" : "opacity-0"
-                }`}
-              />
+              <div 
+                className="flex transition-transform duration-500 ease-in-out h-[260px] md:h-[400px]"
+                style={{ transform: `translateX(-${current * 100}%)` }}
+              >
+                {bikeImages.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt="Bike"
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                    className="w-full shrink-0 h-full object-contain transform md:scale-[1.4] scale-100"
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Right Arrow */}
