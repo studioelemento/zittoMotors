@@ -3,9 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { InterestContext } from "../../../context/InterestContext";
 
 const images = [
-  "/ZCR Page/ZCR Hero Image 1.png",
-  "/ZCR Page/ZCR Hero Image 2.png",
-  "/ZCR Page/ZCR Hero Image 3.png",
+  "/ZCR Page/ZCR Hero Image 1.webp",
+  "/ZCR Page/ZCR Hero Image 2.webp",
+  "/ZCR Page/ZCR Hero Image 3.webp",
 ];
 
 export default function ZCRShowcase() {

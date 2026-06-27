@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, HeartPlusIcon } from "lucide-react";
 import InterestModal from "./InterestModal";
 import { InterestContext } from "../../../../context/InterestContext";
@@ -152,7 +153,8 @@ export default function BikeShowcase() {
                 <HeartPlusIcon className="ml-4 md:ml-6" />
               </button>
 
-              <button
+              <Link
+                to="/zcr"
                 className="
                   flex
                   items-center
@@ -173,7 +175,7 @@ export default function BikeShowcase() {
               >
                 Explore
                 <ArrowRight className="ml-8 md:ml-[93px]" />
-              </button>
+              </Link>
             </div>
           </div>
 
