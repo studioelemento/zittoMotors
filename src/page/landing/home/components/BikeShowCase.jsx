@@ -11,8 +11,12 @@ const bikeImages = [
 ];
 
 export default function BikeShowcase() {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const isAnimating = useRef(false);
   const {handleShowInterestModal} = useContext(InterestContext)
+
+  const trackImages = [bikeImages[bikeImages.length - 1], ...bikeImages, bikeImages[0]];
 
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -41,11 +45,28 @@ export default function BikeShowcase() {
   };
 
   const nextBike = () => {
-    setCurrent((prev) => (prev + 1) % bikeImages.length);
+    if (isAnimating.current) return;
+    setIsTransitioning(true);
+    setCurrent((prev) => prev + 1);
+    isAnimating.current = true;
   };
 
   const prevBike = () => {
-    setCurrent((prev) => (prev - 1 + bikeImages.length) % bikeImages.length);
+    if (isAnimating.current) return;
+    setIsTransitioning(true);
+    setCurrent((prev) => prev - 1);
+    isAnimating.current = true;
+  };
+
+  const handleTransitionEnd = () => {
+    isAnimating.current = false;
+    if (current === 0) {
+      setIsTransitioning(false);
+      setCurrent(bikeImages.length);
+    } else if (current === trackImages.length - 1) {
+      setIsTransitioning(false);
+      setCurrent(1);
+    }
   };
 
   return (
@@ -217,19 +238,21 @@ export default function BikeShowcase() {
               className="w-[95%] md:w-[550px] lg:w-[722px] overflow-hidden cursor-grab active:cursor-grabbing select-none"
             >
               <div 
-                className="flex transition-transform duration-500 ease-in-out h-[260px] md:h-[400px]"
+                onTransitionEnd={handleTransitionEnd}
+                className={`flex h-[260px] md:h-[400px] ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
                 style={{ transform: `translateX(-${current * 100}%)` }}
               >
-                {bikeImages.map((src, i) => (
+                {trackImages.map((src, i) => (
                   <img
                     key={i}
                     src={src}
                     alt="Bike"
-                    fetchPriority={i === 0 ? "high" : "auto"}
+                    fetchPriority={i === 1 ? "high" : "auto"}
                     className="w-full shrink-0 h-full object-contain transform md:scale-[1.4] scale-100"
                   />
                 ))}
               </div>
+
             </div>
 
             {/* Right Arrow */}
