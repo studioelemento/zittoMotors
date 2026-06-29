@@ -7,8 +7,6 @@ export default function Footer() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
-    console.log(123)
-    alert("Started")
     e.preventDefault();
 
     setIsSubmitting(true);
@@ -16,28 +14,36 @@ export default function Footer() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    
+    // Add a flag so the Google Sheet knows this is from the Contact form
+    data.formType = "Contact Us";
+
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/hptr056@gmail.com",
-        {
-          method: "POST",
-          body: formData,
-          headers: { Accept: "application/json" },
-        },
-      );
+      // CLIENT INSTRUCTION: Replace this URL with the Google Apps Script Web App URL
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxPwfbQXHNjBdI49iQ6JGkGtc7koSGBMLTUAi4naXM5Bpz4J4IVeGNQsj0eY7gOOorE/exec";
+      
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
 
-      const data = await response.json();
-
-      if (data.success === "false" || data.success === false) {
-        alert(
-          "Formsubmit Message : " +
-            (data.message || "Please check your email to activate the form"),
-        );
-      } else {
+      if (response.ok) {
         setIsSuccess(true);
+        form.reset();
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 5000);
+      } else {
+        alert("Something went wrong. Please try again.");
       }
     } catch (error) {
-      alert("Something went wrong");
+      alert("Error submitting the form. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -232,25 +238,27 @@ export default function Footer() {
             onSubmit={handleSubmit}
             className="flex flex-col text-[#989898] gap-2.5 w-full"
           >
+            <input type="hidden" name="_captcha" value="false" />
             <input
               type="text"
               placeholder="Name"
               name='name'
+              required
               className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] text-[12px] md:text-[16px]"
             />
             <input
               type="text"
               name='email'
-
+              required
               placeholder="Email Id / Phone number"
               className="w-full bg-white text-[12px] md:text-[16px] text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] "
             />
             <textarea
               name='message'
-
+              required
               rows="4"
               placeholder="For investment, inquiries or further information, please add a note here, and we'll be in touch promptly."
-              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] text-[12px] md:text-[16px] ] resize-none leading-snug"
+              className="w-full bg-white text-black px-3 py-2.5 rounded-[2px] focus:outline-none placeholder:text-[#989898] text-[12px] md:text-[16px] resize-none leading-snug"
             ></textarea>
 
             <button
@@ -262,27 +270,35 @@ export default function Footer() {
               }}
               className="mt-1 w-fit bg-[#D4373D] dm-sans leading-none hover:bg-red-700 transition-colors text-white font-semibold text-[16px] md:text-[20px] ps-[15px] pe-[20px] py-[10px] rounded-[5px] flex items-center gap-2 "
             >
-              Get in touch with us
-              <span className="ml-[26px]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect width="20" height="16" x="2" y="4" rx="2" />
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
-              </span>
+              {isSubmitting ? 'Sending...' : 'Get in touch with us'}
+              {!isSubmitting && (
+                <span className="ml-[26px]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </span>
+              )}
             </button>
             {isSuccess && (
-              <div id="successMessage" style={{ display: "block" }}>
-                <h3>Thank you! Your message has been sent.</h3>
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-[5px] flex items-start gap-3">
+                <svg className="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                  <h4 className="text-green-800 font-semibold text-[16px] m-0 leading-tight">Message sent successfully!</h4>
+                  <p className="text-green-600 text-[13px] mt-1 m-0">Thank you for getting in touch. We will reply to you promptly.</p>
+                </div>
               </div>
             )}
           </form>
