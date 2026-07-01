@@ -58,26 +58,29 @@ export default function InterestModal({ isOpen, onClose }) {
     formData.forEach((value, key) => {
       data[key] = value;
     });
+    
+    // Add formType so Google Script knows which tab to save to
+    data.formType = "Interest";
+
+    // Optimistic UI Update: Show success immediately to the user
+    // because Google Apps Script is inherently slow (takes 2-3 seconds).
+    setIsSuccess(true);
+    form.reset();
+    setIsSubmitting(false);
 
     try {
       // CLIENT INSTRUCTION: Replace this URL with the Google Apps Script Web App URL
       const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxPwfbQXHNjBdI49iQ6JGkGtc7koSGBMLTUAi4naXM5Bpz4J4IVeGNQsj0eY7gOOorE/exec";
       
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      // Fire and forget in the background
+      fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify(data),
+      }).catch((error) => {
+        console.error("Error submitting form:", error);
       });
-
-      if (response.ok) {
-        setIsSuccess(true);
-        form.reset();
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
     } catch (error) {
-      alert("Error submitting the form. Ensure your Google Script URL is correct.");
-    } finally {
-      setIsSubmitting(false);
+      console.error("Error setting up form submission:", error);
     }
   };
 
