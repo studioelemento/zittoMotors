@@ -140,12 +140,12 @@ export default function InterestModal({ isOpen, onClose }) {
                       <div
                         className="rounded h-[200px] w-[260px]  flex items-end justify-center p-[30px] text-white saira font-semibold text-center"
                         style={{
-                          backgroundImage: `url('${bike.image}')`,
+                          backgroundImage: `url('${encodeURI(bike.image)}')`,
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                         }}
                       >
-                        <p className="pt-[180 pb-[20px]">{bike.title}</p>
+                        <p className="pt-[180px] pb-[20px]">{bike.title}</p>
                       </div>
                     </div>
                   ))}
@@ -175,7 +175,7 @@ export default function InterestModal({ isOpen, onClose }) {
                   <div
                     className="rounded mr-[11px] relative w-[50%] text-white saira font-semibold text-center  h-max bg-black   "
                     style={{
-                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 1.png')`,
+                      backgroundImage: `url('${encodeURI("/ZCR Page/ZCR Section 5 Image 1.png")}')`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                     }}
@@ -189,7 +189,7 @@ export default function InterestModal({ isOpen, onClose }) {
                   <div
                     className="rounded saira  mr-[11px] w-[50%] font-semibold relative text-center text-white bg-black  "
                     style={{
-                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 2.png')`,
+                      backgroundImage: `url('${encodeURI("/ZCR Page/ZCR Section 5 Image 2.png")}')`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                     }}
@@ -205,7 +205,7 @@ export default function InterestModal({ isOpen, onClose }) {
                   <div
                     className="rounrounded w-[50%] mr-[11px] saira font-semibold relative text-center text-white bg-black  "
                     style={{
-                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 3.png')`,
+                      backgroundImage: `url('${encodeURI("/ZCR Page/ZCR Section 5 Image 3.png")}')`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                     }}
@@ -219,7 +219,7 @@ export default function InterestModal({ isOpen, onClose }) {
                   <div
                     className="rounded w-[50%] saira mr-[11px] font-semibold relative text-center text-white bg-black  "
                     style={{
-                      backgroundImage: `url('/ZCR Page/ZCR Section 5 Image 4.png')`,
+                      backgroundImage: `url('${encodeURI("/ZCR Page/ZCR Section 5 Image 4.png")}')`,
                       backgroundSize: "cover",
                       backgroundPosition: "center center",
                     }}

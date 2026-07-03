@@ -5,9 +5,9 @@ export default function AboutSection() {
         {/* Logo */}
         <div className=" pt-[40px] px-[20px] ">
         <img
-          src="https://zittomotors.com/wp-content/uploads/2024/02/Zitto-logo-2.png"
+          src="/Logo/logoWithText.png"
           alt="Zitto"
-          className="md:w-[210px] w-[20%] mx-auto md:mx-0"
+          className="md:w-[210px] w-[20%] mx-auto md:mx-0 invert"
         />
 
         {/* Heading */}
@@ -26,39 +26,30 @@ export default function AboutSection() {
 
         {/* Gallery */}
         <div className="md:mt-[120px] md:h-[770px] mt-[60px] mb-[30px] overflow-hidden">
-          <div className="grid h-full md:grid-cols-4 grid-cols-3 grid-rows-2">
+          <div className="grid h-full grid-cols-3 grid-rows-2">
             {/* Left Tall */}
             <div className="row-span-2">
               <img
-                src="https://zittomotors.com/wp-content/uploads/2024/04/Rectangle103-31-Desktop-1.png"
-                alt=""
+                src="/About/about_tank.png"
+                alt="Motorcycle Tank"
                 className="h-full w-full object-cover"
               />
             </div>
 
-            {/* Top Middle Left */}
+            {/* Top Middle */}
             <div>
               <img
-                src="https://zittomotors.com/wp-content/uploads/2024/03/Rectangle101-31-Desktop-114-2.png"
-                alt=""
+                src="/About/Rectangle101-31-Desktop-114.png"
+                alt="Sketches"
                 className="h-full w-full object-cover"
               />
             </div>
 
-            {/* Top Middle Right */}
+            {/* Top Right */}
             <div>
               <img
-                src="https://zittomotors.com/wp-content/uploads/2024/04/Rectangle-159.png"
-                alt=""
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            {/* Right Tall */}
-            <div className="row-span-2 md:block hidden">
-              <img
-                src="https://zittomotors.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-03-09-at-10.59-1.png"
-                alt=""
+                src="/About/Rectangle 159.png"
+                alt="Team working"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -66,8 +57,8 @@ export default function AboutSection() {
             {/* Bottom Wide */}
             <div className="col-span-2">
               <img
-                src="	https://zittomotors.com/wp-content/uploads/2024/03/Rectangle104-31-Desktop-1.png"
-                alt=""
+                src="/About/about_.png"
+                alt="Designing on iPad"
                 className="h-full w-full object-cover"
               />
             </div>
