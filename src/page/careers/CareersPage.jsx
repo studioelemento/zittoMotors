@@ -95,6 +95,42 @@ const jobs = [
       "I understand that my resume/portfolio submission must be strictly in PDF format.",
       "I acknowledge that any application containing non-PDF links or formats (.doc, .png, .zip, etc.) will be automatically rejected."
     ]
+  },
+  {
+    id: 4,
+    jobId: 'SENIOR_FIRMWARE_INTEGRATION_ENGINEER',
+    title: "Senior Firmware Integration Engineer",
+    location: "Onsite - Bangalore",
+    type: "Full-Time",
+    shortDesc: "Lead the integration, validation and troubleshooting of multiple vehicle controllers within our electric vehicle platform.",
+    highlight: null,
+    openPositions: null,
+    jobSummary: "Zitto Motors is seeking an experienced Firmware Integration Engineer to lead the integration, validation and troubleshooting of multiple vehicle controllers within our electric vehicle platform. The ideal candidate has hands-on experience with vehicle integration, CAN Communication, Embedded Systems Debugging and Automotive Diagnostics.",
+    responsibilities: [
+      "Integrate and validate communication between VCU, BMS, Motor Controller/Inverter, ABS Controller, Dashboard/HMI, Telematics Unit, Onboard Charger (OBC), DC-DC Converter, and additional vehicle ECUs",
+      "Develop and maintain CAN communication matrices, DBC files, signal mapping documentation, and vehicle network architecture documentation",
+      "Debug communication issues using tools such as PEAK CAN, Vector CANalyzer, Vector CANoe, Kvaser, oscilloscopes, and logic analyzers",
+      "Perform vehicle-level integration testing and validation",
+      "Analyze CAN logs and troubleshoot missing messages, bus-off conditions, arbitration issues, incorrect signal decoding, and network timing problems",
+      "Coordinate with firmware, hardware, vehicle dynamics, and testing teams",
+      "Support development of vehicle features such as torque management, regenerative braking, ride modes, cruise control, fault management, and functional safety mechanisms",
+      "Create integration test plans and validation reports",
+      "Support HIL, SIL, and vehicle testing activities"
+    ],
+    qualifications: [
+      "Bachelor's or Master's degree in Electronics Engineering, Embedded Systems, Electrical Engineering, Automotive Engineering, or Mechatronics",
+      "5+ years of experience in automotive embedded systems",
+      "Strong understanding of CAN 2.0A/B, CAN FD, UDS Diagnostics, J1939, and ISO-TP",
+      "Experience integrating multiple automotive ECUs",
+      "Proficiency in C, embedded debugging, and CAN tools and diagnostics",
+      "Experience reading and debugging schematics, wiring harnesses, and CAN topologies",
+      "Hands-on experience with firmware flashing, bootloaders, and calibration tools",
+      "Preferred: EV powertrain integration experience",
+      "Preferred: Experience with VCU development, BMS integration, motor controllers, ABS systems, and Functional Safety (ISO 26262)",
+      "Preferred: Knowledge of AUTOSAR, Ethernet Automotive Networks, LIN, and MQTT-based telematics",
+      "Preferred: Experience with HIL systems such as dSPACE, NI, ETAS"
+    ],
+    confirmations: []
   }
 ];
 
