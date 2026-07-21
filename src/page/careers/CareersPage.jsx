@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SEO from '../../components/SEO'
 import Footer from '../landing/home/components/Footer'
-import { Home, Briefcase, Plus, Minus } from 'lucide-react'
+import { Home, Briefcase, Plus, Minus, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const jobs = [
@@ -105,8 +105,8 @@ const JobCard = ({ job }) => {
     <div className="bg-white rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.2),0_6px_20px_rgba(0,0,0,0.19)] border border-gray-100 p-[20px] mb-[25px]  relative group hver:shadow-[0_0px_25px_rgba(0,0,0,0.1)] transition-shadow">
       <h3 className="text-[#334155] text-[20px] font-bold mb-[20px] pr-16">{job.title}</h3>
       <div className="flex items-center  text-sm text-gray-500 b-6">
-         <div className="flex items-center gap-2 pl-[5px] mb-[1.6rem] "><img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/001.png"/><span className="text-[12px] dm-sans ">{job.location}</span></div>
-         <div className="flex items-center gap-2 pl-[5px] mb-[1.6rem]"><img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/002.png"/> <span className="text-[12px] dm-sans ">{job.type}</span></div>
+         <div className="flex items-center gap-2 pl-[5px] mb-[1.6rem] "><MapPin size={16} className="text-gray-500"/><span className="text-[12px] dm-sans ">{job.location}</span></div>
+         <div className="flex items-center gap-2 pl-[5px] mb-[1.6rem]"><Briefcase size={16} className="text-gray-500"/> <span className="text-[12px] dm-sans ">{job.type}</span></div>
       </div>
       <p className="text-[#475569] dm-sans text-[12px] mb-[19.2px] leading-relaxed">{job.shortDesc}</p>
       <p className="text-[#B00020] dm-sans text-[12px] mt-[8px] mb-[19.2px] font-semibold">{job.highlight}</p>
@@ -117,7 +117,7 @@ const JobCard = ({ job }) => {
         aria-expanded={expanded}
         aria-label={expanded ? "Collapse details" : "Expand details"}
       >
-        {expanded ? <img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/minus.png"/> :<img decoding="async" src="https://zittomotors.com/wp-content/uploads/2024/04/plus.png"/>}
+        {expanded ? <Minus size={20} className="text-black" /> : <Plus size={20} className="text-black" />}
       </button>
 
       {expanded && (
