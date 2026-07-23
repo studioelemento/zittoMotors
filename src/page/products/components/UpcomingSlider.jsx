@@ -5,26 +5,26 @@ import { InterestContext } from "../../../context/InterestContext";
 const bikes = [
   {
     id: 1,
-    title: "Zitto Naked Sport",
-    description: "Embrace the Urban Challenge: Lightweight Naked Dominance",
+    title: "Zitto Street Fighter",
+    description: "Raw power meets urban agility.",
     image: "/ZCR Page/ZCR Section 5 Image 1.png",
   },
   {
     id: 2,
-    title: "Zitto Supersport",
-    description: "Embrace the Uncompromising: Track Precision, made Road Legal",
+    title: "Zitto Naked Sport",
+    description: "Embrace the Urban Challenge: Lightweight Naked Dominance",
     image: "/ZCR Page/ZCR Section 5 Image 2.png",
   },
   {
     id: 3,
-    title: "Zitto Adventure Tourer",
-    description: "Embrace the Uncharted: Every Terrain is your Playground",
+    title: "Zitto Supersport",
+    description: "Embrace the Uncompromising: Track Precision, made Road Legal",
     image: "/ZCR Page/ZCR Section 5 Image 3.png",
   },
   {
     id: 4,
-    title: "Zitto Street Fighter",
-    description: "Raw power meets urban agility.",
+    title: "Zitto Adventure Tourer",
+    description: "Embrace the Uncharted: Every Terrain is your Playground",
     image: "/ZCR Page/ZCR Section 5 Image 4.png",
   },
 ];
