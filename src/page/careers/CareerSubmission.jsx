@@ -133,9 +133,13 @@ const CareerSubmission = () => {
             />
           </div>
 
-                <div className="mb-[10px] flex-col gap-2 mb-2">
-            <label className="text-[12px] text-gray-500">Portfolio (Attaching any documents other than your portfolio of renders and sketches will be considered immediate rejection, This is not an engineering position)
-</label>
+          <div className="mb-[10px] flex-col gap-2 mb-2">
+            <label className="text-[12px] text-gray-500">
+              {position === 'AUTOMOTIVE_DESIGN_INTERN' 
+                ? "Portfolio (Attaching any documents other than your portfolio of renders and sketches will be considered immediate rejection, This is not an engineering position)"
+                : "Portfolio / Supporting Documents (Optional)"
+              }
+            </label>
             <input
               name="portfolio"
               type="file"

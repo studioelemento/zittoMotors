@@ -91,7 +91,6 @@ const jobs = [
       "Basic understanding of EV powertrain architecture, BMS logic, and MCU behaviors is highly preferred"
     ],
     confirmations: [
-      "I am currently a fresher or student and not holding full-time active employment.",
       "I understand that my resume/portfolio submission must be strictly in PDF format.",
       "I acknowledge that any application containing non-PDF links or formats (.doc, .png, .zip, etc.) will be automatically rejected."
     ]
@@ -129,6 +128,40 @@ const jobs = [
       "Preferred: Experience with VCU development, BMS integration, motor controllers, ABS systems, and Functional Safety (ISO 26262)",
       "Preferred: Knowledge of AUTOSAR, Ethernet Automotive Networks, LIN, and MQTT-based telematics",
       "Preferred: Experience with HIL systems such as dSPACE, NI, ETAS"
+    ],
+    confirmations: []
+  },
+  {
+    id: 5,
+    jobId: 'MECHANICAL_ENGINEERING_INTERN',
+    title: "Mechanical Engineering Interns- EV Two wheeler manufactuers",
+    location: "Onsite - Bangalore",
+    type: "Internship",
+    shortDesc: "Assist in mechanical design, 3D CAD modeling, and prototyping for EV two-wheelers.",
+    highlight: "This is an onsite-only position in Bangalore.",
+    openPositions: null,
+    jobSummary: null,
+    responsibilities: [
+      "Assist in mechanical design and development of EV two-wheelers",
+      "Create and modify 3D CAD models and engineering drawings",
+      "Perform design calculations, basic engineering analysis, and component sizing",
+      "Support prototyping, fabrication, validation, and vehicle testing",
+      "Work on chassis, suspension, steering, braking, powertrain mounting, and other mechanical systems",
+      "Participate in design reviews, troubleshooting, and design optimization",
+      "Assist with component selection, material selection, and manufacturing processes",
+      "Work with suppliers and fabrication teams to develop mechanical components",
+      "Document design changes, test results, and engineering processes"
+    ],
+    qualifications: [
+      "Pursuing Mechanical / Automobile Engineering",
+      "Strong fundamentals in mechanical engineering and vehicle systems",
+      "Proficiency in SolidWorks is mandatory",
+      "Hands-on experience with Student Go-Kart, Formula Student, BAJA, SAE or similar projects is highly preferred",
+      "Understanding of mechanical design, manufacturing, materials, and GD&T",
+      "Good analytical and problem-solving skills",
+      "Experience with vehicle dynamics, chassis, suspension, steering, or braking is an advantage",
+      "Understanding of EV two-wheeler architecture is advantageous",
+      "Strong interest in performance vehicles and automotive engineering"
     ],
     confirmations: []
   }
