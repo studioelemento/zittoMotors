@@ -153,7 +153,7 @@ const jobs = [
       "Document design changes, test results, and engineering processes"
     ],
     qualifications: [
-      "Pursuing Mechanical / Automobile Engineering",
+     
       "Strong fundamentals in mechanical engineering and vehicle systems",
       "Proficiency in SolidWorks is mandatory",
       "Hands-on experience with Student Go-Kart, Formula Student, BAJA, SAE or similar projects is highly preferred",
